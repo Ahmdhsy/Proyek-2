@@ -7,3 +7,4 @@ Feby
 Daiva
 
 Tugas hari ini adalah ...
+Senin 
