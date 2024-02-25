@@ -1,7 +1,1 @@
-# Proyek-2
-Tugas-tugas kuliah kelompok 3
-Dhea
-Ahmad
-Bandy
-Feby
-Daiva
+PROYEK 2 - PENGEMBANGAN APLIKASI BERBASIS LIBRARY
