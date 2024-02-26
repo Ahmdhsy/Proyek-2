@@ -151,11 +151,12 @@ int main()
     printf("Private key = %d\n", private_key);
     printf("Masukkan text: ");
     fgets(message, 100, stdin);
+    printf("\n");
 
     int size;
     int *coded = encoder(message, &size);
     printf("Initial message:\n%s", message);
-    printf("\n\nThe encoded message(encrypted by public key)\n");
+    printf("\nThe encoded message(encrypted by public key)\n");
     for (int i = 0; i < size; i++)
     {
         printf("%d", coded[i]);
