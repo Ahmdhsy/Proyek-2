@@ -16,7 +16,7 @@ int main()
     printf("%d", public_key);
     printf("%d", private_key);
     printf("Masukkan text: ");
-    scanf("%s", message);
+    fgets(message, 100, stdin);
 
     int size;
     int *coded = encoder(message, &size);
