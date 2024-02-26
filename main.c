@@ -147,10 +147,10 @@ int main()
         printf("Memory allocation failed.\n");
         return 1; // Exit with an error code
     }
-    printf("%d", public_key);
-    printf("%d", private_key);
+    printf("Public key = %d ", public_key);
+    printf("Private key = %d\n", private_key);
     printf("Masukkan text: ");
-    scanf("%s", message);
+    fgets(message, 100, stdin);
 
     int size;
     int *coded = encoder(message, &size);
