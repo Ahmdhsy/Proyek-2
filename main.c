@@ -1,40 +1,51 @@
-#include "RSA.c"
+#include "RSA.h"
 
 int main()
 {
+    int size;
+    int *coded;
+    char *message, *decoded;
+
     generatePrimeNumber();
     public_key = generatePublicKey();
     private_key = generatePrivateKey(public_key);
-
-    char *message = (char *)malloc(100 * sizeof(char)); // Alokasi memori
+	
+	printf("This is public key: %d\n", public_key);
+	printf("This is private key: %d\n", private_key);
+	
+    message = (char *)malloc(256 * sizeof(char));
 
     if (message == NULL)
     {
         printf("Memory allocation failed.\n");
-        return 1; // retrun true
+        return 1; // return true
     }
-    
-    printf("Public key: %d\n", public_key);
-    printf("Private key: %d\n", private_key);
-    printf("Masukkan text yang ingin dienkripsi: ");
-    fgets(message, 100, stdin);
 
-    int size;
-    int *coded = encoder(message, &size);
-    printf("\nInitial message:\n%s", message);
-    printf("\nThe encoded message (encrypted by public key)\n");
-    
-    for (int i = 0; i < size; i++)
+    printf("Masukkan text yang ingin di enkripsi: ");
+    fgets(message, 256, stdin);
+
+    if (strlen(message) > 0 && message[strlen(message) - 1] != '\n')
     {
-        printf("%d", coded[i]);
+        while (getchar() != '\n');
     }
-    
-    printf("\n\nThe decoded message (decrypted by private key)\n");
-    char *decoded = decoder(coded, size);
-    printf("%s", decoded);
+
+    coded = encoder(message, &size);
+
+    printf("Initial message:\n%s", message);
+    printf("\nThe encoded message (encrypted by public key):\n");
+	
+	int i;
+    for (i = 0; i < size; i++)
+    {
+        printf("%d ", coded[i]); 
+    }
+
+    printf("\n\nThe decoded message (decrypted by private key):\n");
+    decoded = decoder(coded, size);
+    printf("%s\n", decoded);
 
     free(coded);
     free(decoded);
-
+    free(message);
     return 0;
 }
