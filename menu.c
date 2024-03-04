@@ -6,13 +6,14 @@ void menu() {
     printf("\t\t\t\t\t\t\t\t1. Encrypt \n");
     printf("\t\t\t\t\t\t\t\t2. Decrypt \n");
     printf("\t\t\t\t\t\t\t\t3. Keluar \n");
-    printf("\t\t\t\t\t\t================================================\n");
+    printf("\t\t\t\t\t\t==============================================\n");
 }
 
 void encrypt() {
     int pilihan;
 
     do {
+    	printf("\n\t\t\t\t\t\t================== ENCRYPT ==================\n");
         printf("\t\t\t\t\t\t\tEncrypt yang akan digunakan :  1\n");
         /* Menampilkan menu */
         printf("\t\t\t\t\t\t\t1. Masukkan Teks\n");
@@ -36,6 +37,7 @@ void encrypt() {
 }
 
 void decrypt() {
+	printf("\n\t\t\t\t\t\t================== DECRYPT ==================\n");
     printf("\t\t\t\t\t\t\tAnda memilih Pilihan 2\n");
     // Implementasikan fungsi dekripsi di sini
 }
@@ -50,9 +52,11 @@ int main() {
 
         switch (pilihan) {
             case 1:
+                printf("Anda memilih Pilihan 1\n");
                 encrypt();
                 break;
             case 2:
+                printf("Anda memilih Pilihan 2\n");
                 decrypt();
                 break;
             case 3:
