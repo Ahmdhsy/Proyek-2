@@ -1,5 +1,6 @@
 #ifndef RSA_H
 #define RSA_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -15,7 +16,6 @@ extern int private_key;
 extern int n;
 extern int primeNumber1, primeNumber2, fi;
 
-
 void generatePrimeNumber();
 int gcd(int a, int b);
 int pickrandomprime();
@@ -25,5 +25,7 @@ int encrypt(int message);
 int decrypt(int encrypted_text);
 int *encoder(char *message, int *size);
 char *decoder(int *encoded, int size);
+char *shift_message(char *message, int shift_value); // Fungsi untuk shifting pesan
 
 #endif
+

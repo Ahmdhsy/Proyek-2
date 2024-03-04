@@ -29,9 +29,19 @@ int main()
         while (getchar() != '\n');
     }
 
-    coded = encoder(message, &size);
+    // Lakukan shifting pesan sebelum enkripsi
+    int shift_value;
+    printf("Masukkan nilai pergeseran untuk shifting pesan: ");
+    scanf("%d", &shift_value);
+    getchar(); // Tangkap newline character yang tersisa setelah input
+
+    char *shifted_message = shift_message(message, shift_value);
 
     printf("Initial message:\n%s", message);
+    printf("\nThe shifted message before encryption:\n%s", shifted_message);
+
+    coded = encoder(shifted_message, &size);
+
     printf("\nThe encoded message (encrypted by public key):\n");
 	
 	int i;
@@ -42,10 +52,17 @@ int main()
 
     printf("\n\nThe decoded message (decrypted by private key):\n");
     decoded = decoder(coded, size);
-    printf("%s\n", decoded);
+    printf("The decoded message after decryption: %s\n", decoded);
+
+    // Lakukan invers shifting pada pesan yang sudah didekripsi
+    char *inversed_shifted_message = shift_message(decoded, -shift_value);
+    printf("\nThe decoded message after invers shifting: %s\n", inversed_shifted_message);
 
     free(coded);
     free(decoded);
     free(message);
+    free(shifted_message);
+    free(inversed_shifted_message);
     return 0;
 }
+
