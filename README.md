@@ -48,13 +48,13 @@ Pembuatan Fitur readfile dan writefile hasil ciphertext - Febytha Putri Nugrahen
 ## RENCANA TAMPILAN
 
 
-# ABOUT US
+## ABOUT US
 MANAGER:\
 Djoko Cahyo Utomo Lieharyani, S.Kom., M.MT. \
-NIP 199312282019031013\
+NIP 199312282019031013
 
 LEADER:\
-Ahmad Fauzan (NIM:231511033) (Username: Ahmdhsy) \
+Ahmad Fauzan (NIM:231511033) (Username: Ahmdhsy) 
 
 Daiva Raditya Pradipa (NIM:231511039) (Username: RaditZX)\
 Bandyaga Adiansyah Sugandi (NIM:231511037) (Username: basganajaah) \
