@@ -1,1 +1,62 @@
-PROYEK 2 - PENGEMBANGAN APLIKASI BERBASIS LIBRARY
+# APLIKASI ENCRYPTING MENGGUNAKAN METODE RSA
+
+## DESKRIPSI APLIKASI
+Aplikasi ini dibuat untuk memenuhi tugas PROYEK 2 - PENGEMBANGAN APLIKASI BERBASIS LIBRARY.
+Aplikasi ini bertujuan untuk mengubah text biasa menjadi sekumpulan text yang tidak bisa dibaca yang disebut cipher text. Selain itu juga aplikasi ini juga bisa mengubah cipher text hasil metode RSA menjadi text biasa kembali yang dapat dibaca.
+
+## INSTALLATION
+1.Clone repositori atau download semua file dari repositori.\
+2.Install IDE untuk bahasa c/c++ (sangat disarankan menggunakan dev C++)\
+3.Buat project baru di dalam IDE DevC++ (Project bertipe console application).\
+4.Import semua file berekstensi .c dan .h ke dalam project\
+5.Run dan compile project.
+
+## FUNCTION DI DALAM LIBRARY
+
+
+## PEMBAGIAN TUGAS DAN FITUR - CONTRIBUTOR
+Pembuatan Metode RSA - Daiva Raditya Pradipa (039) (Username: RaditZX) (Branch :  RSA-Flow)\
+Pembuatan Metode Shifting - Ahmad Fauzan (033) (Username: Ahmdhsy) \
+Pembuatan Metode Hashing - Bandyaga Adiansyah Sugandi (037) (Username: basganajaah) \
+Pembuatan Menu aplikasi - Dhea Dria Spralia (040) (Username: dheaasprla) \
+Pembuatan Fitur readfile dan writefile hasil ciphertext - Febytha Putri Nugraheni (046) (Username: DFoerzaaaa)\
+
+## RENCANA TAMPILAN
+```c
+//Generate bilangan prime ke dalam sebuah array
+void generatePrimeNumber()
+```
+
+```c
+//Generate public key untuk enkripsi
+int generatePublicKey()
+```
+
+```c
+//Generate private key untuk dekripsi
+int generatePrivateKey(int publicKey)
+```
+
+```c
+//Mengenkripsi text atau pesan
+int *encoder(char *message, int *size,int shift)
+```
+
+```c
+//Mengdekripsi text atau pesan
+char *decoder(int *encoded, int size, int *shift)
+```
+
+
+# ABOUT US
+MANAGER:\
+Djoko Cahyo Utomo Lieharyani, S.Kom., M.MT. \
+NIP 199312282019031013\
+
+LEADER:\
+Ahmad Fauzan (NIM:231511033) (Username: Ahmdhsy) \
+
+Daiva Raditya Pradipa (NIM:231511039) (Username: RaditZX)\
+Bandyaga Adiansyah Sugandi (NIM:231511037) (Username: basganajaah) \
+Dhea Dria Spralia (NIM:231511040) (Username: dheaasprla) \
+Febytha Putri Nugraheni (NIM:231511046) (Username: DFoerzaaaa)
