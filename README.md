@@ -12,16 +12,6 @@ Aplikasi ini bertujuan untuk mengubah text biasa menjadi sekumpulan text yang ti
 5.Run dan compile project.
 
 ## FUNCTION DI DALAM LIBRARY
-
-
-## PEMBAGIAN TUGAS DAN FITUR - CONTRIBUTOR
-Pembuatan Metode RSA - Daiva Raditya Pradipa (039) (Username: RaditZX) (Branch :  RSA-Flow)\
-Pembuatan Metode Shifting - Ahmad Fauzan (033) (Username: Ahmdhsy) \
-Pembuatan Metode Hashing - Bandyaga Adiansyah Sugandi (037) (Username: basganajaah) \
-Pembuatan Menu aplikasi - Dhea Dria Spralia (040) (Username: dheaasprla) \
-Pembuatan Fitur readfile dan writefile hasil ciphertext - Febytha Putri Nugraheni (046) (Username: DFoerzaaaa)\
-
-## RENCANA TAMPILAN
 ```c
 //Generate bilangan prime ke dalam sebuah array
 void generatePrimeNumber()
@@ -46,6 +36,16 @@ int *encoder(char *message, int *size,int shift)
 //Mengdekripsi text atau pesan
 char *decoder(int *encoded, int size, int *shift)
 ```
+
+
+## PEMBAGIAN TUGAS DAN FITUR - CONTRIBUTOR
+Pembuatan Metode RSA - Daiva Raditya Pradipa (039) (Username: RaditZX) (Branch :  RSA-Flow)\
+Pembuatan Metode Shifting - Ahmad Fauzan (033) (Username: Ahmdhsy) \
+Pembuatan Metode Hashing - Bandyaga Adiansyah Sugandi (037) (Username: basganajaah) \
+Pembuatan Menu aplikasi - Dhea Dria Spralia (040) (Username: dheaasprla) \
+Pembuatan Fitur readfile dan writefile hasil ciphertext - Febytha Putri Nugraheni (046) (Username: DFoerzaaaa)\
+
+## RENCANA TAMPILAN
 
 
 # ABOUT US
