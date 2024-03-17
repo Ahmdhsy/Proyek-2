@@ -54,7 +54,6 @@ char* readFiles(char *message);
 
 ```c
 // Function tampilan menu
-void menu();
 void encryptMenu(int *pilihanEncryptMenu);
 ```
 
