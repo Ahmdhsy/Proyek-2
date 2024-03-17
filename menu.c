@@ -3,6 +3,7 @@
 
 void menu()
 {
+	printf("\033[0;36m]");
     printf("\n================= Menu =================\n");
     printf("1. Encrypt Shifting & Hashing + RSA \n");
     printf("2. Decrypt Shifting & Hashing + RSA \n");
@@ -14,6 +15,7 @@ void encryptMenu(int *pilihanEncryptMenu, char *metode)
 {
     do
     {
+    	printf("\033[0;36m]"); //mengubah warna teks
         printf("Metode %s yang akan digunakan :  1\n", metode);
         /* Menampilkan menu */
         printf("1. Masukkan Teks\n");
