@@ -4,14 +4,14 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = main.o RSA.o
-LINKOBJ  = main.o RSA.o
+OBJ      = main.o RSA.o files.o menu.o Shifting.o hashing.o cls.o
+LINKOBJ  = main.o RSA.o files.o menu.o Shifting.o hashing.o cls.o
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
 BIN      = RSA.exe
-CXXFLAGS = $(CXXINCS) 
-CFLAGS   = $(INCS) 
+CXXFLAGS = $(CXXINCS) -std=c99
+CFLAGS   = $(INCS) -std=c99
 RM       = rm.exe -f
 
 .PHONY: all all-before all-after clean clean-custom
@@ -29,3 +29,18 @@ main.o: main.c
 
 RSA.o: RSA.c
 	$(CC) -c RSA.c -o RSA.o $(CFLAGS)
+
+files.o: files.c
+	$(CC) -c files.c -o files.o $(CFLAGS)
+
+menu.o: menu.c
+	$(CC) -c menu.c -o menu.o $(CFLAGS)
+
+Shifting.o: Shifting.c
+	$(CC) -c Shifting.c -o Shifting.o $(CFLAGS)
+
+hashing.o: hashing.c
+	$(CC) -c hashing.c -o hashing.o $(CFLAGS)
+
+cls.o: cls.c
+	$(CC) -c cls.c -o cls.o $(CFLAGS)

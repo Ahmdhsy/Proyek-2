@@ -1,6 +1,6 @@
 #include "files.h"
 
-char *readFiles() {
+char *readFiles(char *message) {
     FILE *file = fopen("file.txt", "r");
 
     if (file == NULL) {

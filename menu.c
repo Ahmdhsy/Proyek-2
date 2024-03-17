@@ -1,12 +1,13 @@
 #include "menu.h"
+#include "cls.h"
 
 void menu()
 {
-    printf("\n==================== Menu ====================\n");
-    printf("1. Encrypt Shifting + RSA \n");
-    printf("2. Decrypt Shifting + RSA \n");
+    printf("\n================= Menu =================\n");
+    printf("1. Encrypt Shifting & Hashing + RSA \n");
+    printf("2. Decrypt Shifting & Hashing + RSA \n");
     printf("3. Keluar \n");
-    printf("================================================\n");
+    printf("===========================================\n");
 }
 
 void encryptMenu(int *pilihanEncryptMenu)
@@ -18,8 +19,8 @@ void encryptMenu(int *pilihanEncryptMenu)
         printf("1. Masukkan Teks\n");
         printf("2. Read File\n");
         printf("Pilih menu (1/2): ");
-        scanf("%d", pilihanEncryptMenu); // Use the address-of operator here
-
+        scanf("%d", pilihanEncryptMenu);
+		clear();
         switch (*pilihanEncryptMenu)
         {
         case 1:
