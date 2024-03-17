@@ -69,12 +69,12 @@ int main()
 
             for (i = 0; i < size; i++)
             {
-                printf("%d\n", coded[i]);
+                printf("%d ", coded[i]);
             }
 
             // Hasil enkripsi disimpan dalam variabel chipertext
             char *chipertext = custom_hash(shifted_message);
-            printf("\nHashed ciphertext: %s\n", chipertext);
+            printf("\n\nHashed ciphertext: %s\n", chipertext);
             free(chipertext); // Jangan lupa untuk membebaskan memori setelah selesai digunakan
             
             break;
