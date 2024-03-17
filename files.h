@@ -1,9 +1,9 @@
-#ifndef FILE_H
-#define FILE_H
+#ifndef FILES_H
+#define FILES_H
 #include <stdio.h>
 #include <stdlib.h>
 
 
-char* readFile(char *message);
+char* readFiles(char *message);
 
 #endif

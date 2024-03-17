@@ -4,9 +4,11 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <string.h>
+#include "hashing.h"
 // #include <openssl/sha.h>
 
 #define MAX_PRIME 250
+
 extern int prime[MAX_PRIME];
 extern int prime_count;
 
