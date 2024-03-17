@@ -13,33 +13,54 @@ Aplikasi ini bertujuan untuk mengubah text biasa menjadi sekumpulan text yang ti
 
 ## FUNCTION DI DALAM LIBRARY
 ```c
-//Generate bilangan prime ke dalam sebuah array
+// Generate bilangan prime ke dalam sebuah array
 void generatePrimeNumber()
 ```
 
 ```c
-//Generate public key untuk enkripsi
+// Generate public key untuk enkripsi
 int generatePublicKey()
 ```
 
 ```c
-//Generate private key untuk dekripsi
+// Generate private key untuk dekripsi
 int generatePrivateKey(int publicKey)
 ```
 
 ```c
-//Mengenkripsi text atau pesan
+// Mengenkripsi text atau pesan
 int *encoder(char *message, int *size,int shift)
 ```
 
 ```c
-//Mengdekripsi text atau pesan
+// Mendekripsi text atau pesan
 char *decoder(int *encoded, int size, int *shift)
+```
+
+```c
+// Mengenkripsi text atau pesan yang telah melalui RSA menggunakan shifting
+char *shift_message(char *message, int shift_value);
 ```
 
 ```c
 //Mengenkripsi text atau pesan yang telah melalui RSA dan shifting menggunakan simple hash function
 char *custom_hash(char *message);
+```
+
+```c
+// Function untuk membaca dan menyimpan text ke dalam file
+char* readFiles(char *message);
+```
+
+```c
+// Function tampilan menu
+void menu();
+void encryptMenu(int *pilihanEncryptMenu);
+```
+
+```c
+// Function clear screen setelah input user
+void clear();
 ```
 
 ## PEMBAGIAN TUGAS DAN FITUR - CONTRIBUTOR
