@@ -180,7 +180,7 @@ char *decoder(int *encoded, int size, int *shift)
 {
 
     n = encoded[0];
-    *shift = encoded[size]; // Retrieve shift from the last element
+    *shift = encoded[size-1]; // Retrieve shift from the last element
 
     char *s = (char *)malloc((size - 2) * sizeof(char)); // Exclude size and shift
 

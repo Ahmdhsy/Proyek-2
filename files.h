@@ -4,6 +4,6 @@
 #include <stdlib.h>
 
 
-char* readFiles(char *message);
+char* readFiles(char *fileName);
 
 #endif

@@ -10,11 +10,11 @@ void menu()
     printf("===========================================\n");
 }
 
-void encryptMenu(int *pilihanEncryptMenu)
+void encryptMenu(int *pilihanEncryptMenu, char *metode)
 {
     do
     {
-        printf("Encrypt yang akan digunakan :  1\n");
+        printf("Metode %s yang akan digunakan :  1\n", metode);
         /* Menampilkan menu */
         printf("1. Masukkan Teks\n");
         printf("2. Read File\n");

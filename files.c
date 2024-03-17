@@ -1,10 +1,11 @@
 #include "files.h"
 
-char *readFiles(char *message) {
-    FILE *file = fopen("file.txt", "r");
-
+char *readFiles(char *fileName) {
+    printf("%s\n", fileName); // Print the file name for debugging purposes
+  	FILE *file;
+  	file = fopen(fileName, "r");
     if (file == NULL) {
-        printf("Failed to open the file.\n");
+         perror("Failed to open the file");
         return NULL;
     }
 
@@ -13,7 +14,6 @@ char *readFiles(char *message) {
     fseek(file, 0, SEEK_SET);
 
     char *content = (char *)malloc(length + 1);
-
     if (content == NULL) {
         printf("Memory allocation failed.\n");
         fclose(file);
@@ -27,3 +27,4 @@ char *readFiles(char *message) {
 
     return content;
 }
+

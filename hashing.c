@@ -1,8 +1,5 @@
 #include "hashing.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
+
 
 char *custom_hash(char *message) {
     int len = strlen(message);
