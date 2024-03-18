@@ -77,6 +77,9 @@ int main()
             {
                 printf("%d ", coded[i]);
             }
+            printf("\n\nPress enter to continue...");
+            getchar();
+            clear();
             break;
         case 2:
         	encryptMenu(&pilihanEncryptMenu, "decrypt");
@@ -117,7 +120,11 @@ int main()
 
             inversed_shifted_message = shift_message(decoded, -shift_value);
             printf("\nThe decoded message after invers shifting: %s\n", inversed_shifted_message);
-            break;
+            
+			printf("\nPress enter to continue...");
+            getchar();
+            clear();
+			break;
         case 3:
     		encryptMenu(&pilihanEncryptMenu,"encrypt");
             generatePrimeNumber();
