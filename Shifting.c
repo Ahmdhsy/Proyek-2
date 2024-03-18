@@ -47,3 +47,27 @@ char *shift_message(char *message, int shift_value)
 
     free(shifted_message);
 }
+
+/*char *shift_word(char *word, int shift_value) {
+    int length = strlen(word);
+    char *shifted_word = (char *)malloc((length + 1) * sizeof(char));
+
+    if (shifted_word == NULL) {
+        printf("Memory allocation failed.\n");
+        exit(1);
+    }
+
+    for (int i = 0; i < length; i++) {
+        char current_char = word[i];
+        if (isalpha(current_char)) {
+            char base = islower(current_char) ? 'a' : 'A';
+            shifted_word[i] = base + (current_char - base + shift_value + 26) % 26;
+        } else {
+            shifted_word[i] = current_char;
+        }
+    }
+
+    shifted_word[length] = '\0'; // Tambahkan terminasi string pada akhir kata
+
+    return shifted_word;
+}*/
