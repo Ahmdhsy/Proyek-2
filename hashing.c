@@ -12,7 +12,7 @@ char *custom_hash(char *message) {
 
     // Tabel penggantian atau kunci
     char replacement_table[] = "!@#$%^&*()_+-=[]{}|?~`QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890";
-
+	
     // Mengubah setiap karakter pesan menjadi karakter acak dari tabel penggantian
     for (int i = 0; i < len; i++) {
         hashed_message[i] = replacement_table[rand() % strlen(replacement_table)];

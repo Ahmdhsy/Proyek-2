@@ -66,7 +66,7 @@ int main()
 
             shifted_message = shift_message(message, shift_value);
 
-            printf("Initial message:\n%s", message);
+            printf("\nInitial message:\n%s", message);
             printf("\nThe shifted message before encryption:\n%s", shifted_message);
 
             coded = encoder(shifted_message, &size, shift_value);
@@ -77,10 +77,6 @@ int main()
             {
                 printf("%d ", coded[i]);
             }
-
-            // Hash the ciphertext and store the result in chipertext
-            chiperText = custom_hash(shifted_message);
-            printf("\n\nHashed ciphertext: %s\n", chiperText);
             break;
         case 2:
         	encryptMenu(&pilihanEncryptMenu, "decrypt");
@@ -123,6 +119,58 @@ int main()
             printf("\nThe decoded message after invers shifting: %s\n", inversed_shifted_message);
             break;
         case 3:
+    		encryptMenu(&pilihanEncryptMenu,"encrypt");
+            generatePrimeNumber();
+            public_key = generatePublicKey();
+            private_key = generatePrivateKey(public_key);
+
+
+            message = (char *)malloc(256 * sizeof(char));
+
+            if (pilihanEncryptMenu == 1)
+            {
+                printf("Masukkan text yang ingin di enkripsi: ");
+                getchar();
+                fgets(message, 256, stdin);
+                clear();
+
+                if (strlen(message) > 0 && message[strlen(message) - 1] != '\n')
+                {
+                    while (getchar() != '\n')
+                        ;
+                }
+            }
+            else if (pilihanEncryptMenu == 2)
+            {
+                fileName = (char *)malloc(256 * sizeof(char)); // Allocate memory for fileName
+                printf("Masukkan nama file (ex:text.txt): ");
+                getchar();
+            	scanf("%255s", fileName);
+                message = readFiles(fileName);
+                free(fileName); 
+            }
+
+            printf("Masukkan nilai pergeseran untuk shifting pesan: ");
+            scanf("%d", &shift_value);
+            getchar(); // Capture the newline character left after the input
+            clear();
+            
+            printf("This is public key: %d\n", public_key);
+            printf("This is private key: %d\n", private_key);
+
+            shifted_message = shift_message(message, shift_value);
+
+            printf("\nInitial message:\n%s", message);
+            printf("\nThe shifted message before encryption:\n%s", shifted_message);
+			// Hash
+            chiperText = custom_hash(shifted_message);
+            printf("\nHashed ciphertext: %s\n", chiperText);
+            
+            printf("\nPress enter to continue...");
+            getchar();
+            clear();
+            break;
+		case 4:
             printf("Terima Kasih ... \n");
             break;
         default:
@@ -130,7 +178,7 @@ int main()
         }
 
 
-    } while (pilihan != 3);
+    } while (pilihan != 4);
     
     
         // Free allocated memory
