@@ -54,7 +54,6 @@ char* readFiles(char *message);
 
 ```c
 // Function tampilan menu
-void menu();
 void encryptMenu(int *pilihanEncryptMenu);
 ```
 
@@ -63,25 +62,40 @@ void encryptMenu(int *pilihanEncryptMenu);
 void clear();
 ```
 
+```c
+// Function shifting untuk menukar kata pada shifting_word
+char *shift_word(char *word, int shift_value);
+```
+
 ## PEMBAGIAN TUGAS DAN FITUR - CONTRIBUTOR
-Pembuatan Metode RSA - Daiva Raditya Pradipa (039) (Username: RaditZX) (Branch :  RSA-Flow)\
+Pembuatan Metode RSA - Daiva Raditya Pradipa (039) (Username: RaditZX) \
 Pembuatan Metode Shifting - Ahmad Fauzan (033) (Username: Ahmdhsy) \
 Pembuatan Metode Hashing - Bandyaga Adiansyah Sugandi (037) (Username: basganajaah) \
 Pembuatan Menu Aplikasi - Dhea Dria Spralia (040) (Username: dheaasprla) \
-Pembuatan Fitur Readfiles dan Writefiles hasil Ciphertext - Febytha Putri Nugraheni (046) (Username: DFoerzaaaa)\
+Pembuatan Fitur Readfiles hasil Ciphertext - Febytha Putri Nugraheni (046) (Username: DFoerzaaaa) \
 
 ## RENCANA TAMPILAN
+1. Tampilan awal berisi pilihan menu untuk enkripsi shifting dan RSA
+  a. memasukkan text yang ingin di enkripsi
+  b. lalu, masukkan nilai pergeseran(shifting)
+3. Deskripsi shifting dan RSA
+  a. masukkan text yang telah di enkripsi
+  b. masukkan private key
+5. Enkripsi shifting dan hasing
+6. Keluar
 
+Selanjutnya jika memilih salah satu akan menampilkan 
+- masukan text
+- read file
 
 ## ABOUT US
 MANAGER:\
 Djoko Cahyo Utomo Lieharyani, S.Kom., M.MT. \
 NIP 199312282019031013
 
-LEADER:\
-Ahmad Fauzan (NIM:231511033) (Username: Ahmdhsy) 
 MEMBER:\
-Daiva Raditya Pradipa (NIM:231511039) (Username: RaditZX)\
+Ahmad Fauzan (NIM:231511033) (Username: Ahmdhsy) \ 
+Daiva Raditya Pradipa (NIM:231511039) (Username: RaditZX) \
 Bandyaga Adiansyah Sugandi (NIM:231511037) (Username: basganajaah) \
 Dhea Dria Spralia (NIM:231511040) (Username: dheaasprla) \
 Febytha Putri Nugraheni (NIM:231511046) (Username: DFoerzaaaa)

@@ -42,8 +42,13 @@ CursorRow=7
 TopLine=1
 LeftChar=1
 [Editor_12]
+<<<<<<< HEAD
 CursorCol=5
 CursorRow=14
+=======
+CursorCol=1
+CursorRow=7
+>>>>>>> 0e1f471a43f84cafdafadd4fc3745850dead2508
 TopLine=1
 LeftChar=1
 [Editor_9]

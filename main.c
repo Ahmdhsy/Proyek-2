@@ -24,12 +24,11 @@ int main()
         clear();
         switch (pilihan)
         {
-         case 1:
-            encryptMenu(&pilihanEncryptMenu,"encrypt");
+        case 1:
+            encryptMenu(&pilihanEncryptMenu, "encrypt");
             generatePrimeNumber();
             public_key = generatePublicKey();
             private_key = generatePrivateKey(public_key);
-
 
             message = (char *)malloc(256 * sizeof(char));
 
@@ -51,28 +50,26 @@ int main()
                 fileName = (char *)malloc(256 * sizeof(char));
                 printf("Masukkan nama file (ex:text.txt): ");
                 getchar();
-            	scanf("%255s", fileName);
+                scanf("%255s", fileName);
                 message = readFiles(fileName);
-                free(fileName); 
+                free(fileName);
             }
 
             printf("Masukkan nilai pergeseran untuk shifting pesan: ");
             scanf("%d", &shift_value);
-            getchar(); 
+            getchar();
             clear();
-            
+
             printf("This is public key: %d\n", public_key);
             printf("This is private key: %d\n", private_key);
 
             shifted_message = shift_message(message, shift_value);
 
-            printf("Initial message:\n%s", message);
+            printf("\nInitial message:\n%s", message);
             printf("\nThe shifted message before encryption:\n%s", shifted_message);
-			randomizePosition(&head,shifted_message, strlen(shifted_message) - 1);
-			insertRandomChar(&head,shifted_message, strlen(shifted_message) - 1);
+            randomizePosition(&head, shifted_message, strlen(shifted_message) - 1);
+            insertRandomChar(&head, shifted_message, strlen(shifted_message) - 1);
             coded = encoder(shifted_message, &size, shift_value);
-            
-                
 
             printf("\nThe encoded message (encrypted by public key):\n");
 
@@ -80,9 +77,9 @@ int main()
             {
                 printf("%d ", coded[i]);
             }
-
-            chiperText = custom_hash(shifted_message);
-            printf("\n\nHashed ciphertext: %s\n", chiperText);
+            printf("\n\nPress enter to continue...");
+            getchar();
+            clear();
             break;
         case 2:
             encryptMenu(&pilihanEncryptMenu, "decrypt");
@@ -123,14 +120,70 @@ int main()
 
             inversed_shifted_message = shift_message(decoded, -shift_value);
             printf("\nThe decoded message after invers shifting: %s\n", inversed_shifted_message);
+
+            printf("\nPress enter to continue...");
+            getchar();
+            clear();
             break;
         case 3:
+            encryptMenu(&pilihanEncryptMenu, "encrypt");
+            generatePrimeNumber();
+            public_key = generatePublicKey();
+            private_key = generatePrivateKey(public_key);
+
+            message = (char *)malloc(256 * sizeof(char));
+
+            if (pilihanEncryptMenu == 1)
+            {
+                printf("Masukkan text yang ingin di enkripsi: ");
+                getchar();
+                fgets(message, 256, stdin);
+                clear();
+
+                if (strlen(message) > 0 && message[strlen(message) - 1] != '\n')
+                {
+                    while (getchar() != '\n')
+                        ;
+                }
+            }
+            else if (pilihanEncryptMenu == 2)
+            {
+                fileName = (char *)malloc(256 * sizeof(char)); // Allocate memory for fileName
+                printf("Masukkan nama file (ex:text.txt): ");
+                getchar();
+                scanf("%255s", fileName);
+                message = readFiles(fileName);
+                free(fileName);
+            }
+
+            printf("Masukkan nilai pergeseran untuk shifting pesan: ");
+            scanf("%d", &shift_value);
+            getchar(); // Capture the newline character left after the input
+            clear();
+
+            printf("This is public key: %d\n", public_key);
+            printf("This is private key: %d\n", private_key);
+
+            shifted_message = shift_message(message, shift_value);
+
+            printf("\nInitial message:\n%s", message);
+            printf("\nThe shifted message before encryption:\n%s", shifted_message);
+            // Hash
+            chiperText = custom_hash(shifted_message);
+            printf("\nHashed ciphertext: %s\n", chiperText);
+
+            printf("\nPress enter to continue...");
+            getchar();
+            clear();
+            break;
+        case 4:
             printf("Terima Kasih ... \n");
             break;
         default:
             printf("Pilihan tidak valid. Silakan pilih 1-3.\n");
         }
 
+<<<<<<< HEAD
     } while (pilihan != 3);
 
     free(message);
@@ -139,6 +192,19 @@ int main()
     free(decoded);
     free(inversed_shifted_message);
     free(chiperText);
+    == == == =
+}
+while (pilihan != 4)
+    ;
 
-    return 0;
+// Free allocated memory
+free(message);
+free(coded);
+free(shifted_message);
+free(decoded);
+free(inversed_shifted_message);
+free(chiperText);
+>>>>>>> 0e1f471a43f84cafdafadd4fc3745850dead2508
+
+return 0;
 }

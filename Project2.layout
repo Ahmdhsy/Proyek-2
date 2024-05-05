@@ -37,9 +37,15 @@ CursorRow=7
 TopLine=1
 LeftChar=1
 [Editor_6]
+<<<<<<< HEAD
 CursorCol=25
 CursorRow=23
 TopLine=10
+=======
+CursorCol=14
+CursorRow=57
+TopLine=34
+>>>>>>> 0e1f471a43f84cafdafadd4fc3745850dead2508
 LeftChar=1
 [Editor_7]
 CursorCol=1
