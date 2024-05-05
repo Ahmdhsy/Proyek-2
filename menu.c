@@ -23,14 +23,14 @@ void encryptMenu(int *pilihanEncryptMenu, char *metode)
 		clear();
         switch (*pilihanEncryptMenu)
         {
-        case 1:
-            break;
-        case 2:
-            printf("Membaca teks dari file untuk dienkripsi:\n");
-            // Lakukan enkripsi teks dari file di sini
-            break;
-        default:
-            printf("Pilihan tidak valid. Silakan pilih 1 atau 2.\n");
+	        case 1:
+	            break;
+	        case 2:
+	            printf("Membaca teks dari file untuk dienkripsi:\n");
+	            // Lakukan enkripsi teks dari file di sini
+	            break;
+	        default:
+	            printf("Pilihan tidak valid. Silakan pilih 1 atau 2.\n");
         }
     } while (*pilihanEncryptMenu != 1 && *pilihanEncryptMenu != 2);
 }

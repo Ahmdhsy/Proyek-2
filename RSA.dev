@@ -28,8 +28,8 @@ Folders=
 IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
-CompilerSettings=00000000a0000000000000000
-UnitCount=15
+CompilerSettings=00000000a0000000001000000
+UnitCount=17
 
 [VersionInfo]
 Major=1
@@ -192,6 +192,26 @@ BuildCmd=
 
 [Unit15]
 FileName=cls.c
+CompileCpp=0
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit16]
+FileName=linkedlist.h
+CompileCpp=0
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit17]
+FileName=linkedlist.c
 CompileCpp=0
 Folder=
 Compile=1

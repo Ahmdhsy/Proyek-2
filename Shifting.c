@@ -1,5 +1,6 @@
 #include "Shifting.h"
 
+
 char *shift_message(char *message, int shift_value)
 {
     int length = strlen(message);
@@ -47,3 +48,62 @@ char *shift_message(char *message, int shift_value)
 
     free(shifted_message);
 }
+
+void randomizePosition(address **head, char *message, int size) {
+    srand(time(NULL)); // Seed srand only once
+
+    for (int i = 0; i < size; i++) {
+        int angka = rand() % 3; // Generate random number from 0 to 2
+
+        if (*head == NULL) {
+            insertAtBeginning(head, message[i]);
+            continue;
+        }
+
+        switch (angka) {
+            case 0:
+                insertAtBeginning(head, message[i]);
+                break;
+            case 1:
+                insertAfter(head, message[i]);
+                break;
+            case 2:
+                insertAtEnd(head, message[i]);
+                break;
+        }
+    }
+
+    printf("Linked List setelah randomisasi: \n");
+    printList(*head);
+}
+
+void insertRandomChar(address **head, char *message, int size) {
+    srand(time(NULL)); // Seed srand only once
+    char replacement_table[] = "!@#$%^&*()_+-=[]{}|?~`QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890";
+
+    for (int i = 0; i < size; i++) {
+        int angka = rand() % 3; // Generate random number from 0 to 2
+        int charChoice = rand() % strlen(replacement_table);
+
+        if (*head == NULL) {
+            insertAtBeginning(head, replacement_table[charChoice]);
+            continue;
+        }
+
+        switch (angka) {
+            case 0:
+                insertAtBeginning(head, replacement_table[charChoice]);
+                break;
+            case 1:
+                insertAfter(head, replacement_table[charChoice]);
+                break;
+            case 2:
+                insertAtEnd(head, replacement_table[charChoice]);
+                break;
+        }
+    }
+
+    printf("Linked List setelah insert random char: \n");
+    printList(*head);
+}
+

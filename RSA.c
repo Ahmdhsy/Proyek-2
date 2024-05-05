@@ -13,13 +13,13 @@ void generatePrimeNumber()
     /*Mengenerate bilangan prima dan disimpan pada array primeNumber*/
     for (int i = 2; i < MAX_PRIME; i++)
     {
-        int isPrime = 1; // Prediksi awal bahwa i adalah prima
+        int isPrime = 1;
 
         for (int j = 2; j * j <= i; j++)
         {
             if (i % j == 0)
             {
-                isPrime = 0; // Jika ditemukan faktor, bukan prima
+                isPrime = 0;
                 break;
             }
         }
@@ -116,10 +116,10 @@ int decrypt(int encrypted_text)
     return decrypted;
 }
 
-int *encoder(char *message, int *size,int shift)
+int *encoder(char *message, int *size, int shift)
 {
     int length = strlen(message);
-    int *form = (int *)malloc((length + 2) * sizeof(int)); // Allocate one extra space for size
+    int *form = (int *)malloc((length + 2) * sizeof(int));
 
     if (form == NULL)
     {
@@ -128,14 +128,14 @@ int *encoder(char *message, int *size,int shift)
     }
 
     // Store the size of the message in the first element
-	form[0] = n;
-	form[length + 1] = shift;
-	
+    form[0] = n;
+    form[length + 1] = shift;
+
     for (int i = 0; i < length; i++)
     {
-        form[i+1] = encrypt(message[i]);
+        form[i + 1] = encrypt(message[i]);
     }
-    *size = length + 2; // Update size including the size information
+    *size = length + 2;
     return form;
 }
 
@@ -154,7 +154,7 @@ int *convertToIntArray(char *str, int *size)
     }
 
     // Alokasi memori untuk array integer
-    array = (int *)malloc((count + 1) * sizeof(int)); // Menambahkan 1 untuk menyimpan ukuran array
+    array = (int *)malloc((count + 1) * sizeof(int));
     if (array == NULL)
     {
         printf("Memory allocation failed.\n");
@@ -162,7 +162,7 @@ int *convertToIntArray(char *str, int *size)
     }
 
     // Mengonversi string menjadi array integer
-    char *token = strtok(str, " "); // Menggunakan spasi sebagai pemisah
+    char *token = strtok(str, " ");
     int index = 0;
     while (token != NULL)
     {
@@ -180,9 +180,9 @@ char *decoder(int *encoded, int size, int *shift)
 {
 
     n = encoded[0];
-    *shift = encoded[size-1]; // Retrieve shift from the last element
+    *shift = encoded[size - 1];
 
-    char *s = (char *)malloc((size - 2) * sizeof(char)); // Exclude size and shift
+    char *s = (char *)malloc((size - 2) * sizeof(char));
 
     if (s == NULL)
     {
@@ -194,8 +194,8 @@ char *decoder(int *encoded, int size, int *shift)
     {
         s[i] = (char)decrypt(encoded[i + 1]);
     }
-    s[size - 2] = '\0'; // Null-terminate the string
+
+    s[size - 2] = '\0';
 
     return s;
 }
-

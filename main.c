@@ -3,18 +3,18 @@
 #include "menu.h"
 #include "files.h"
 #include "cls.h"
-#include "hashing.h" 
+#include "hashing.h"
+#include "linkedlist.h"
 
 int main()
 {
-    /* Declaration of Variables */
     int size, i, pilihan, pilihanEncryptMenu, shift_value;
     int *coded;
     char *message, *decoded, *inversed_shifted_message, *fileName;
     char *shifted_message;
     char *chiperText;
+    address head = NULL;
 
-    /* Program */
     pilihanEncryptMenu = 0;
     do
     {
@@ -24,7 +24,7 @@ int main()
         clear();
         switch (pilihan)
         {
-        case 1:
+         case 1:
             encryptMenu(&pilihanEncryptMenu,"encrypt");
             generatePrimeNumber();
             public_key = generatePublicKey();
@@ -48,7 +48,7 @@ int main()
             }
             else if (pilihanEncryptMenu == 2)
             {
-                fileName = (char *)malloc(256 * sizeof(char)); // Allocate memory for fileName
+                fileName = (char *)malloc(256 * sizeof(char));
                 printf("Masukkan nama file (ex:text.txt): ");
                 getchar();
             	scanf("%255s", fileName);
@@ -58,7 +58,7 @@ int main()
 
             printf("Masukkan nilai pergeseran untuk shifting pesan: ");
             scanf("%d", &shift_value);
-            getchar(); // Capture the newline character left after the input
+            getchar(); 
             clear();
             
             printf("This is public key: %d\n", public_key);
@@ -68,8 +68,11 @@ int main()
 
             printf("Initial message:\n%s", message);
             printf("\nThe shifted message before encryption:\n%s", shifted_message);
-
+			randomizePosition(&head,shifted_message, strlen(shifted_message) - 1);
+			insertRandomChar(&head,shifted_message, strlen(shifted_message) - 1);
             coded = encoder(shifted_message, &size, shift_value);
+            
+                
 
             printf("\nThe encoded message (encrypted by public key):\n");
 
@@ -78,14 +81,13 @@ int main()
                 printf("%d ", coded[i]);
             }
 
-            // Hash the ciphertext and store the result in chipertext
             chiperText = custom_hash(shifted_message);
             printf("\n\nHashed ciphertext: %s\n", chiperText);
             break;
         case 2:
-        	encryptMenu(&pilihanEncryptMenu, "decrypt");
+            encryptMenu(&pilihanEncryptMenu, "decrypt");
             message = (char *)malloc(256 * sizeof(char));
-             if (pilihanEncryptMenu == 1)
+            if (pilihanEncryptMenu == 1)
             {
                 printf("Masukkan text yang ingin di dekripsi: ");
                 getchar();
@@ -103,11 +105,11 @@ int main()
                 fileName = (char *)malloc(256 * sizeof(char)); // Allocate memory for fileName
                 printf("Masukkan nama file (ex:text.txt): ");
                 getchar();
-            	scanf("%255s", fileName);
+                scanf("%255s", fileName);
                 message = readFiles(fileName);
-                free(fileName); 
+                free(fileName);
             }
-         
+
             coded = convertToIntArray(message, &size);
 
             printf("Masukkan private key untuk pesan ini: ");
@@ -116,7 +118,7 @@ int main()
             clear();
 
             printf("\nThe decoded message (decrypted by private key):\n");
-            decoded = decoder(coded, size, &shift_value); 
+            decoded = decoder(coded, size, &shift_value);
             printf("The decoded message after decryption: %s\n", decoded);
 
             inversed_shifted_message = shift_message(decoded, -shift_value);
@@ -129,18 +131,14 @@ int main()
             printf("Pilihan tidak valid. Silakan pilih 1-3.\n");
         }
 
-
     } while (pilihan != 3);
-    
-    
-        // Free allocated memory
-        free(message);
-        free(coded);
-        free(shifted_message);
-        free(decoded);
-        free(inversed_shifted_message);
-        free(chiperText);
+
+    free(message);
+    free(coded);
+    free(shifted_message);
+    free(decoded);
+    free(inversed_shifted_message);
+    free(chiperText);
 
     return 0;
 }
-

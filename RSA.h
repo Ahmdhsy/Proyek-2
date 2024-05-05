@@ -9,6 +9,7 @@
 
 #define MAX_PRIME 250
 
+
 extern int prime[MAX_PRIME];
 extern int prime_count;
 

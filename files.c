@@ -1,7 +1,6 @@
 #include "files.h"
 
 char *readFiles(char *fileName) {
-    printf("%s\n", fileName); // Print the file name for debugging purposes
   	FILE *file;
   	file = fopen(fileName, "r");
     if (file == NULL) {
