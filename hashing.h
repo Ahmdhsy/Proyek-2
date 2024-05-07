@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-
+  
 char *custom_hash(char *message);
 
 #endif

@@ -14,6 +14,7 @@ int main()
     char *shifted_message;
     char *chiperText;
     address head = NULL;
+    address tail = NULL;
 
     pilihanEncryptMenu = 0;
     do
@@ -67,8 +68,8 @@ int main()
 
             printf("\nInitial message:\n%s", message);
             printf("\nThe shifted message before encryption:\n%s", shifted_message);
-            randomizePosition(&head, shifted_message, strlen(shifted_message) - 1);
-            insertRandomChar(&head, shifted_message, strlen(shifted_message) - 1);
+            randomizePosition(&head,&tail, shifted_message, strlen(shifted_message) - 1);
+            insertRandomChar(&head,&tail, shifted_message, strlen(shifted_message) - 1);
             coded = encoder(shifted_message, &size, shift_value);
 
             printf("\nThe encoded message (encrypted by public key):\n");
@@ -183,7 +184,7 @@ int main()
             printf("Pilihan tidak valid. Silakan pilih 1-3.\n");
         }
 
-<<<<<<< HEAD
+
     } while (pilihan != 3);
 
     free(message);
@@ -192,19 +193,9 @@ int main()
     free(decoded);
     free(inversed_shifted_message);
     free(chiperText);
-    == == == =
-}
-while (pilihan != 4)
-    ;
+    
+    return 0;
 
-// Free allocated memory
-free(message);
-free(coded);
-free(shifted_message);
-free(decoded);
-free(inversed_shifted_message);
-free(chiperText);
->>>>>>> 0e1f471a43f84cafdafadd4fc3745850dead2508
-
-return 0;
 }
+
+

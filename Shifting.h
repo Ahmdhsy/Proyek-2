@@ -7,8 +7,8 @@
 #include "linkedlist.h"
 
 char *shift_message(char *message, int shift_value);
-void randomizePosition(address **head, char *message, int size);
+void randomizePosition(address **head,address **tail, char *message, int size);
 void unrandomizePosition(char *message, int size);
-void insertRandomChar(address **head, char *message, int size);
+void insertRandomChar(address **head,address **tail, char *message, int size);
 
 #endif

@@ -5,19 +5,22 @@
 #include <string.h>
 
 typedef struct tLinked *address;
-typedef struct tLinked {
+typedef struct tLinked
+{
     char info;
-    address next;
+    address next, prev;
 } Linked;
 
-void insertAtBeginning(address *head_ref, char new_data);
+void insertAtBeginning(address *head_ref,address *tail, char new_data);
 
 // Fungsi untuk menambahkan node baru di tengah linked list
 void insertAfter(address prev_node, char new_data);
 
 // Fungsi untuk menambahkan node baru di akhir linked list
-void insertAtEnd(address *head_ref, char new_data);
+void insertAtEnd(address *head_ref,address *tail, char new_data);
 
 void printList(address node);
 
-#endif 
+char *convertLinkedToString(address head_ref);
+
+#endif

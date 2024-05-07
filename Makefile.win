@@ -1,8 +1,8 @@
 # Project: RSA
 # Makefile created by Dev-C++ 5.11
 
-CPP      = g++.exe
-CC       = gcc.exe
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
 WINDRES  = windres.exe
 OBJ      = main.o RSA.o files.o menu.o Shifting.o hashing.o cls.o linkedlist.o
 LINKOBJ  = main.o RSA.o files.o menu.o Shifting.o hashing.o cls.o linkedlist.o
@@ -44,9 +44,6 @@ hashing.o: hashing.c
 
 cls.o: cls.c
 	$(CC) -c cls.c -o cls.o $(CFLAGS)
-<<<<<<< HEAD
 
 linkedlist.o: linkedlist.c
 	$(CC) -c linkedlist.c -o linkedlist.o $(CFLAGS)
-=======
->>>>>>> 0e1f471a43f84cafdafadd4fc3745850dead2508

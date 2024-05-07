@@ -48,42 +48,56 @@ char *shift_message(char *message, int shift_value)
     free(shifted_message);
 }
 
-void randomizePosition(address **head, char *message, int size)
+void randomizePosition(address **head, address **tail, char *message, int size)
 {
-    srand(time(NULL)); // Seed srand only once
-
     for (int i = 0; i < size; i++)
     {
-        int angka = rand() % 3; // Generate random number from 0 to 2
+        insertAtEnd(head, tail, message[i]);
+    }
 
-        if (*head == NULL)
+    address pNode = *head;
+    address pLast = *tail;
+    
+
+    for (int i = 1; i < size / 2; i++)
+    {
+        if ( pNode != NULL && pNode->next != NULL)
         {
-            insertAtBeginning(head, message[i]);
-            continue;
+            int temp = pNode->info;
+            pNode->info = pNode->next->info;
+            pNode->next->info = temp;
         }
-
-        switch (angka)
+        if (pNode != NULL)
         {
-        case 0:
-            insertAtBeginning(head, message[i]);
-            break;
-        case 1:
-            insertAfter(head, message[i]);
-            break;
-        case 2:
-            insertAtEnd(head, message[i]);
-            break;
+            pNode = pNode->next;
+        }
+    }
+    
+
+    for (int i = 1; i < size / 2; i++)
+    {
+        if ( pLast != NULL && pLast->prev != NULL)
+        {
+            // Pertukaran data antara pLast dan pLast->prev
+            int temp = pLast->info;
+            pLast->info = pLast->prev->info;
+            pLast->prev->info = temp;
+        }
+        if (pLast != NULL)
+        {
+            pLast = pLast->prev;
         }
     }
 
+    // Langkah 5: Cetak linked list yang telah di-randomisasi
     printf("Linked List setelah randomisasi: \n");
     printList(*head);
 }
 
-void insertRandomChar(address **head, char *message, int size)
+void insertRandomChar(address **head, address **tail, char *message, int size)
 {
-    srand(time(NULL)); // Seed srand only once
-    char replacement_table[] = "!@#$%^&*()_+-=[]{}|?~`QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890";
+    srand(time(NULL));
+    char replacement_table[] = "~`QWOP()_+-=[]{}|?NMqwertYUIASERTiopasfghXCVB!@#DFGHJKLZyujkld$%^&*zxcvbnm1234567890";
 
     for (int i = 0; i < size; i++)
     {
@@ -92,20 +106,20 @@ void insertRandomChar(address **head, char *message, int size)
 
         if (*head == NULL)
         {
-            insertAtBeginning(head, replacement_table[charChoice]);
+            insertAtBeginning(head, tail, replacement_table[charChoice]);
             continue;
         }
 
         switch (angka)
         {
         case 0:
-            insertAtBeginning(head, replacement_table[charChoice]);
+            insertAtBeginning(head, tail, replacement_table[charChoice]);
             break;
         case 1:
             insertAfter(head, replacement_table[charChoice]);
             break;
         case 2:
-            insertAtEnd(head, replacement_table[charChoice]);
+            insertAtEnd(head, tail, replacement_table[charChoice]);
             break;
         }
     }
