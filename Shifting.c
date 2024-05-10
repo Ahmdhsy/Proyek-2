@@ -57,11 +57,10 @@ void randomizePosition(address **head, address **tail, char *message, int size)
 
     address pNode = *head;
     address pLast = *tail;
-    
 
     for (int i = 1; i < size / 2; i++)
     {
-        if ( pNode != NULL && pNode->next != NULL)
+        if (pNode != NULL && pNode->next != NULL)
         {
             int temp = pNode->info;
             pNode->info = pNode->next->info;
@@ -72,13 +71,11 @@ void randomizePosition(address **head, address **tail, char *message, int size)
             pNode = pNode->next;
         }
     }
-    
 
     for (int i = 1; i < size / 2; i++)
     {
-        if ( pLast != NULL && pLast->prev != NULL)
+        if (pLast != NULL && pLast->prev != NULL)
         {
-            // Pertukaran data antara pLast dan pLast->prev
             int temp = pLast->info;
             pLast->info = pLast->prev->info;
             pLast->prev->info = temp;
@@ -89,7 +86,6 @@ void randomizePosition(address **head, address **tail, char *message, int size)
         }
     }
 
-    // Langkah 5: Cetak linked list yang telah di-randomisasi
     printf("Linked List setelah randomisasi: \n");
     printList(*head);
 }
@@ -98,32 +94,48 @@ void insertRandomChar(address **head, address **tail, char *message, int size)
 {
     srand(time(NULL));
     char replacement_table[] = "~`QWOP()_+-=[]{}|?NMqwertYUIASERTiopasfghXCVB!@#DFGHJKLZyujkld$%^&*zxcvbnm1234567890";
+	
+    address pNode = *head;
 
-    for (int i = 0; i < size; i++)
+    while(pNode != NULL)
     {
-        int angka = rand() % 3; // Generate random number from 0 to 2
-        int charChoice = rand() % strlen(replacement_table);
-
-        if (*head == NULL)
+        if (pNode->prev != NULL)
         {
-            insertAtBeginning(head, tail, replacement_table[charChoice]);
-            continue;
+            int charChoice = rand() % strlen(replacement_table);
+            insertAfter(pNode->prev, replacement_table[charChoice]);
         }
-
-        switch (angka)
-        {
-        case 0:
-            insertAtBeginning(head, tail, replacement_table[charChoice]);
-            break;
-        case 1:
-            insertAfter(head, replacement_table[charChoice]);
-            break;
-        case 2:
-            insertAtEnd(head, tail, replacement_table[charChoice]);
-            break;
-        }
+        pNode = pNode->next;
     }
 
     printf("Linked List setelah insert random char: \n");
     printList(*head);
 }
+
+// versi sebelumnya
+
+//void insertRandomChar(address **head, address **tail, char *message, int size)
+//{
+//    srand(time(NULL));
+//    char replacement_table[] = "~`QWOP()_+-=[]{}|?NMqwertYUIASERTiopasfghXCVB!@#DFGHJKLZyujkld$%^&*zxcvbnm1234567890";
+//	
+//	
+//	address pNode = *head;
+//	address pTail = *tail;
+//	int i;
+//	
+//    while(pNode != NULL)
+//    {
+//    	i=1;
+//        if (i % 2 != 0)
+//        {
+//			address temp = pNode;
+//			pNode=pNode->next;
+//            int charChoice = rand() % strlen(replacement_table);
+//            insertAfter(temp, replacement_table[charChoice]);    
+//        }
+//        i++;
+//    }
+//
+//    printf("Linked List setelah insert random char: \n");
+//    printList(*head);
+//}

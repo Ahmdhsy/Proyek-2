@@ -32,16 +32,18 @@ void insertAtBeginning(address *head_ref, address *tail, char new_data)
 //    *head_ref = new_node;
 //}
 // Fungsi untuk menambahkan node baru di tengah linked list
-void insertAfter(address prev_node, char new_data)
-{
-    if (prev_node == NULL)
-    {
-        printf("Node sebelumnya tidak boleh NULL");
+void insertAfter(address prev_node, char new_data) {
+    if (prev_node == NULL) {
+        printf("Node sebelumnya tidak boleh NULL\n");
         return;
     }
     address new_node = (address)malloc(sizeof(Linked));
     new_node->info = new_data;
     new_node->next = prev_node->next;
+    new_node->prev = prev_node;
+    if (prev_node->next != NULL) {
+        prev_node->next->prev = new_node;
+    }
     prev_node->next = new_node;
 }
 
@@ -84,6 +86,7 @@ void printList(address node)
         printf("%c ", node->info);
         node = node->next;
     }
+    printf("\n");
 }
 
 char *convertLinkedToString(address head_ref)
