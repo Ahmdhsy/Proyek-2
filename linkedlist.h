@@ -19,6 +19,12 @@ void insertAfter(address prev_node, char new_data);
 // Fungsi untuk menambahkan node baru di akhir linked list
 void insertAtEnd(address *head_ref,address *tail, char new_data);
 
+void deleteAtBeginning(address *head_ref, address *tail);
+
+void deleteAtEnd(address *head_ref, address *tail);
+
+void deleteAfter(address prev_node);
+
 void printList(address node);
 
 char *convertLinkedToString(address head_ref);
