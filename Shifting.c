@@ -70,9 +70,6 @@ void randomizePosition(address **head, address **tail, char *message, int size)
 
             pNode = temp->next;
         }
-    }
-    for (int i = 1; i < size / 2; i++)
-    {
         if (pNode != NULL && pNode->next != NULL)
         {
 
