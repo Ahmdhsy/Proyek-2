@@ -62,27 +62,27 @@ void randomizePosition(address **head, address **tail, char *message, int size)
     {
         if (pNode != NULL && pNode->next != NULL)
         {
-            int temp = pNode->info;
-            pNode->info = pNode->next->info;
-            pNode->next->info = temp;
-        }
-        if (pNode != NULL)
-        {
-            pNode = pNode->next;
+            address temp = pNode->next;
+
+            char temp_info = pNode->info;
+            pNode->info = temp->info;
+            temp->info = temp_info;
+
+            pNode = temp->next;
         }
     }
-
     for (int i = 1; i < size / 2; i++)
     {
-        if (pLast != NULL && pLast->prev != NULL)
+        if (pNode != NULL && pNode->next != NULL)
         {
-            int temp = pLast->info;
-            pLast->info = pLast->prev->info;
-            pLast->prev->info = temp;
-        }
-        if (pLast != NULL)
-        {
-            pLast = pLast->prev;
+
+            address temp = pLast->prev;
+
+            char temp_info = pLast->info;
+            pLast->info = temp->info;
+            temp->info = temp_info;
+
+            pNode = temp->next;
         }
     }
 
@@ -94,10 +94,10 @@ void insertRandomChar(address **head, address **tail, char *message, int size)
 {
     srand(time(NULL));
     char replacement_table[] = "~`QWOP()_+-=[]{}|?NMqwertYUIASERTiopasfghXCVB!@#DFGHJKLZyujkld$%^&*zxcvbnm1234567890";
-	
+
     address pNode = *head;
 
-    while(pNode != NULL)
+    while (pNode != NULL)
     {
         if (pNode->prev != NULL)
         {
@@ -113,29 +113,29 @@ void insertRandomChar(address **head, address **tail, char *message, int size)
 
 // versi sebelumnya
 
-//void insertRandomChar(address **head, address **tail, char *message, int size)
+// void insertRandomChar(address **head, address **tail, char *message, int size)
 //{
-//    srand(time(NULL));
-//    char replacement_table[] = "~`QWOP()_+-=[]{}|?NMqwertYUIASERTiopasfghXCVB!@#DFGHJKLZyujkld$%^&*zxcvbnm1234567890";
-//	
-//	
+//     srand(time(NULL));
+//     char replacement_table[] = "~`QWOP()_+-=[]{}|?NMqwertYUIASERTiopasfghXCVB!@#DFGHJKLZyujkld$%^&*zxcvbnm1234567890";
+//
+//
 //	address pNode = *head;
 //	address pTail = *tail;
 //	int i;
-//	
-//    while(pNode != NULL)
-//    {
-//    	i=1;
-//        if (i % 2 != 0)
-//        {
+//
+//     while(pNode != NULL)
+//     {
+//     	i=1;
+//         if (i % 2 != 0)
+//         {
 //			address temp = pNode;
 //			pNode=pNode->next;
-//            int charChoice = rand() % strlen(replacement_table);
-//            insertAfter(temp, replacement_table[charChoice]);    
-//        }
-//        i++;
-//    }
+//             int charChoice = rand() % strlen(replacement_table);
+//             insertAfter(temp, replacement_table[charChoice]);
+//         }
+//         i++;
+//     }
 //
-//    printf("Linked List setelah insert random char: \n");
-//    printList(*head);
-//}
+//     printf("Linked List setelah insert random char: \n");
+//     printList(*head);
+// }
