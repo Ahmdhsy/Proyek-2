@@ -58,7 +58,7 @@ void randomizePosition(address **head, address **tail, char *message, int size)
     address pNode = *head;
     address pLast = *tail;
 
-    for (int i = 1; i < size / 2; i++)
+    for (int i = 1; i < size / 2 - 1; i++)
     {
         if (pNode != NULL && pNode->next != NULL)
         {
@@ -70,7 +70,7 @@ void randomizePosition(address **head, address **tail, char *message, int size)
 
             pNode = temp->next;
         }
-        if (pNode != NULL && pNode->next != NULL)
+        if (pNode != NULL && pNode->prev != NULL)
         {
 
             address temp = pLast->prev;
@@ -79,7 +79,7 @@ void randomizePosition(address **head, address **tail, char *message, int size)
             pLast->info = temp->info;
             temp->info = temp_info;
 
-            pNode = temp->next;
+            pLast = temp->prev;
         }
     }
 
