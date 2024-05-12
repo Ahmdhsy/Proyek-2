@@ -155,8 +155,27 @@ char *convertLinkedToString(address head_ref)
 {
     address pNode;
     char *Result;
-    int i;
+    int i, length = 0;
 
+    // Calculate the length of the linked list
+    pNode = head_ref;
+    while (pNode != NULL)
+    {
+        length++;
+        pNode = pNode->next;
+    }
+
+    // Allocate memory for the result string
+    Result = (char *)malloc((length + 1) * sizeof(char)); // Add space for the null terminator
+
+    // Check if memory allocation was successful
+    if (Result == NULL)
+    {
+        printf("Memory allocation failed\n");
+        exit(EXIT_FAILURE);
+    }
+
+    // Copy characters from linked list to the result string
     i = 0;
     pNode = head_ref;
     while (pNode != NULL)
@@ -166,5 +185,9 @@ char *convertLinkedToString(address head_ref)
         i++;
     }
 
-    return *Result;
+    // Add null terminator to the end of the result string
+    Result[i] = '\0';
+
+    return Result;
 }
+

@@ -1,4 +1,5 @@
 #include "Shifting.h"
+#include <time.h>
 
 char *shift_message(char *message, int shift_value)
 {
@@ -48,7 +49,7 @@ char *shift_message(char *message, int shift_value)
     free(shifted_message);
 }
 
-void randomizePosition(address **head, address **tail, char *message, int size)
+void randomizePosition(address *head, address *tail, char *message, int size)
 {
     for (int i = 0; i < size; i++)
     {
@@ -87,7 +88,7 @@ void randomizePosition(address **head, address **tail, char *message, int size)
     printList(*head);
 }
 
-void insertRandomChar(address **head, address **tail, char *message, int size)
+void insertRandomChar(address *head, address *tail, char *message, int size)
 {
     srand(time(NULL));
     char replacement_table[] = "~`QWOP()_+-=[]{}|?NMqwertYUIASERTiopasfghXCVB!@#DFGHJKLZyujkld$%^&*zxcvbnm1234567890";

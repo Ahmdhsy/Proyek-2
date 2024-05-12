@@ -4,8 +4,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include "menu.h"
+
+#define MAX_LEN 1000
   
-char *custom_hash(char *message);
+void customEncrypt(const char *plaintextHash, char *ciphertextHash, int *randomValues);
+void customDecrypt(const char *ciphertextHash, char *plaintextHash, const int *randomValues);
+int menuHashing();
 
 #endif
 
