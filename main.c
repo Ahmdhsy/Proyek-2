@@ -70,7 +70,8 @@ int main()
             printf("\nThe shifted message before encryption:\n%s", shifted_message);
             randomizePosition(&head,&tail, shifted_message, strlen(shifted_message) - 1);
             insertRandomChar(&head,&tail, shifted_message, strlen(shifted_message) - 1);
-            coded = encoder(shifted_message, &size, shift_value);
+            char *randomize_message = convertLinkedToString(head);
+            coded = encoder(randomize_message, &size, shift_value);
 
             printf("\nThe encoded message (encrypted by public key):\n");
 

@@ -155,8 +155,23 @@ char *convertLinkedToString(address head_ref)
 {
     address pNode;
     char *Result;
-    int i;
+    int i, len = 0;
 
+    pNode = head_ref;
+    while (pNode != NULL)
+    {
+        len++;
+        pNode = pNode->next;
+    }
+
+    Result = (char *)malloc((len + 1) * sizeof(char)); 
+    if (Result == NULL)
+    {
+        printf("Gagal melakukan alokasi memori.\n");
+        exit(1);
+    }
+
+   
     i = 0;
     pNode = head_ref;
     while (pNode != NULL)
@@ -165,6 +180,8 @@ char *convertLinkedToString(address head_ref)
         pNode = pNode->next;
         i++;
     }
+    Result[i] = '\0'; 
 
-    return *Result;
+    return Result;
 }
+
