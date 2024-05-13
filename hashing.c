@@ -2,6 +2,14 @@
 #include "menu.h"
 #include "cls.h"
 
+struct Node* createNode(char data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    newNode->prev = NULL;
+    return newNode;
+}
+
 void customEncrypt(const char *plaintextHash, char *ciphertextHash, int *randomValues) {
     int len = strlen(plaintextHash);
     srand(time(NULL));
