@@ -48,6 +48,40 @@ void linkedListToArray(struct Node* head, char *array) {
     array[i] = '\0';
 }
 
+void printLinkedList(struct Node* head) {
+    struct Node* current = head;
+    while (current != NULL) {
+        printf("[%c]", current->data);
+        current = current->next;
+    }
+    printf("\n");
+}
+
+void addRandomCharacter(struct Node* head) {
+    struct Node* current = head;
+    while (current->next != NULL) {
+        current = current->next;
+    }
+    int randomValue = rand() % 26 + 'a';
+    struct Node* newNode = createNode(randomValue);
+    current->next = newNode;
+    newNode->prev = current;
+}
+
+void deleteRandomCharacter(struct Node* head) {
+    struct Node* current = head;
+    while (current != NULL && current->next != NULL) {
+        current = current->next;
+    }
+    if (current != NULL) {
+        struct Node* prevNode = current->prev;
+        if (prevNode != NULL) {
+            prevNode->next = NULL;
+            free(current);
+        }
+    }
+}
+
 void customEncrypt(const char *plaintextHash, char *ciphertextHash, int *randomValues) {
     int len = strlen(plaintextHash);
     srand(time(NULL));
@@ -67,54 +101,57 @@ void customDecrypt(const char *ciphertextHash, char *plaintextHash, const int *r
 }
 
 int menuHashing() {
-    char plaintextHash[MAX_LEN];
-    char ciphertextHash[MAX_LEN];
-    char decryptedText[MAX_LEN];
+    char plaintext[MAX_LEN];
+    char ciphertext[MAX_LEN];
     int randomValues[MAX_LEN];
+    struct Node* ciphertextLinkedList = NULL;
     int choice;
-    int randomValuesEncrypted = 0; // Flag to check if random values are stored
+
+    srand(time(NULL)); // Seed the random number generator
 
     do {
-        printf("[1] Encrypt Custom Hashing\n");
-        printf("[2] Decrypt Custom Hashing\n");
-        printf("[3] Menu Utama\n");
-        printf("Pilih menu (1/2/3): ");
+        printf("\nMenu:\n");
+        printf("[1] Encrypt\n");
+        printf("[2] Decrypt\n");
+        printf("[3] Exit\n");
+        printf("Enter your choice: ");
         scanf("%d", &choice);
 
         switch (choice) {
             case 1:
-            	clear();
-                printf("Masukkan pesan/plaintext: ");
-                getchar();
-                fgets(plaintextHash, sizeof(plaintextHash), stdin);
-                customEncrypt(plaintextHash, ciphertextHash, randomValues);
-                printf("Encrypted text: %s\n", ciphertextHash);
-                randomValuesEncrypted = 1;
-                
-                printf("Tekan ENTER untuk continue...");
-                getchar();
-           		clear();
+                printf("Enter plaintext: ");
+                getchar(); // Consume newline
+                fgets(plaintext, sizeof(plaintext), stdin); // Read entire line
+                customEncrypt(plaintext, ciphertext, randomValues);
+                printf("Ciphertext: %s\n", ciphertext);
+                ciphertextLinkedList = arrayToLinkedList(ciphertext);
+                printf("Linked list ciphertext: ");
+                printLinkedList(ciphertextLinkedList);
+                addRandomCharacter(ciphertextLinkedList);
+                printf("Linked list after adding random character: ");
+                printLinkedList(ciphertextLinkedList);
                 break;
             case 2:
-            	clear();
-                if (!randomValuesEncrypted) {
-                    printf("Error: Random values tidak ada. Coba untuk mengenkripsi sebuah text terlebih dahulu.\n");
-                	break;
-                } else {
-                	printf("Ciphertext saat ini: %s", ciphertextHash);
-                	customDecrypt(ciphertextHash, decryptedText, randomValues);
-                	printf("Decrypted text: %s\n", decryptedText);
-                	printf("Tekan ENTER untuk continue...\n");
-                	getchar();
-                	getchar();
-                	clear();
-                	break;
-				}
+                if (ciphertextLinkedList == NULL) {
+                    printf("Error: No ciphertext available. Encrypt first.\n");
+                    break;
+                }
+                printf("Current linked list containing added character: ");
+                printLinkedList(ciphertextLinkedList);
+                deleteRandomCharacter(ciphertextLinkedList);
+                printf("Linked list after deleting the added character: ");
+                printLinkedList(ciphertextLinkedList);
+                linkedListToArray(ciphertextLinkedList, ciphertext);
+                printf("Ciphertext: %s\n", ciphertext);
+                customDecrypt(ciphertext, plaintext, randomValues);
+                printf("Decrypted text: %s", plaintext);
+                break;
             case 3:
-                menu();
+                freeLinkedList(ciphertextLinkedList);
+                printf("Exiting...\n");
                 break;
             default:
-                printf("Pilihan tidak valid. Silakan pilih 1, 2, atau 3.\n");
+                printf("Invalid choice! Please enter again.\n");
         }
     } while (choice != 3);
 
