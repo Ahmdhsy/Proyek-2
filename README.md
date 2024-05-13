@@ -82,6 +82,16 @@ void insertRandomChar(address *head, address *tail, char *message)
 char *convertLinkedToString(address head_ref);
 ```
 
+```c
+// Function deleteRandomChar untuk menghapus karakter yang tidak seharusnya ada karena fungsi dari insertRandomChar tersebut
+void deleteRandomChar(address *head);
+```
+
+```c
+// Function unrandomizePosition untuk mengembalikan ke urutan pergeseran sebelumnya dan masuk ke invers shifting untuk di kembalikan ke messege awal
+void unrandomizePosition(address *head, address *tail, int size);
+```
+
 
 
 ## PEMBAGIAN TUGAS DAN FITUR - CONTRIBUTOR
