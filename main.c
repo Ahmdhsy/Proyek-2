@@ -82,50 +82,51 @@ int main()
             getchar();
             clear();
             break;
-        case 2:
-            encryptMenu(&pilihanEncryptMenu, "decrypt");
-            message = (char *)malloc(256 * sizeof(char));
-            if (pilihanEncryptMenu == 1)
-            {
-                printf("Masukkan text yang ingin di dekripsi: ");
-                getchar();
-                fgets(message, 256, stdin);
-                clear();
-
-                if (strlen(message) > 0 && message[strlen(message) - 1] != '\n')
-                {
-                    while (getchar() != '\n')
-                        ;
-                }
-            }
-            else if (pilihanEncryptMenu == 2)
-            {
-                fileName = (char *)malloc(256 * sizeof(char)); // Allocate memory for fileName
-                printf("Masukkan nama file (ex:text.txt): ");
-                getchar();
-                scanf("%255s", fileName);
-                message = readFiles(fileName);
-                free(fileName);
-            }
-
-            coded = convertToIntArray(message, &size);
-
-            printf("Masukkan private key untuk pesan ini: ");
-            scanf("%d", &private_key);
-            getchar();
-            clear();
-
-            printf("\nThe decoded message (decrypted by private key):\n");
-            decoded = decoder(coded, size, &shift_value);
-            printf("The decoded message after decryption: %s\n", decoded);
-
-            inversed_shifted_message = shift_message(decoded, -shift_value);
-            printf("\nThe decoded message after invers shifting: %s\n", inversed_shifted_message);
-
-            printf("\nTekan ENTER to continue...");
-            getchar();
-            clear();
-            break;
+			case 2:
+			    encryptMenu(&pilihanEncryptMenu, "decrypt");
+			    message = (char *)malloc(256 * sizeof(char));
+			    if (pilihanEncryptMenu == 1)
+			    {
+			        printf("Masukkan text yang ingin di dekripsi: ");
+			        getchar();
+			        fgets(message, 256, stdin);
+			        clear();
+			
+			        if (strlen(message) > 0 && message[strlen(message) - 1] != '\n')
+			        {
+			            while (getchar() != '\n');
+			        }
+			    }
+			    else if (pilihanEncryptMenu == 2)
+			    {
+			        fileName = (char *)malloc(256 * sizeof(char)); // Allocate memory for fileName
+			        printf("Masukkan nama file (ex:text.txt): ");
+			        getchar();
+			        scanf("%255s", fileName);
+			        message = readFiles(fileName);
+			        free(fileName);
+			    }
+			
+			    coded = convertToIntArray(message, &size);
+			
+			    printf("Masukkan private key untuk pesan ini: ");
+			    scanf("%d", &private_key);
+			    getchar();
+			    clear();
+			
+			    printf("\nThe decoded message (decrypted by private key):\n");
+			    decoded = decoder(coded, size, &shift_value);
+			    printf("The decoded message after decryption: %s\n", decoded);
+			
+			    deleteRandomChar(&head);
+			    unrandomizePosition(&head, &tail, strlen(decoded)); // Perbaikan: menggunakan panjang pesan terdekripsi
+			    inversed_shifted_message = shift_message(decoded, -shift_value); // Perbaikan: invers shifting sebelum digunakan
+			    printf("\nThe decoded message after invers shifting: %s\n", inversed_shifted_message);
+			
+			    printf("\nTekan ENTER to continue...");
+			    getchar();
+			    clear();
+			    break;
         case 3:
             menuHashing();
             printf("\nTekan ENTER untuk continue...");
