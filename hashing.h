@@ -16,6 +16,10 @@ struct Node {
   
 void customEncrypt(const char *plaintextHash, char *ciphertextHash, int *randomValues);
 void customDecrypt(const char *ciphertextHash, char *plaintextHash, const int *randomValues);
+struct Node* createNode(char data);
+void freeLinkedList(struct Node* head);
+struct Node* arrayToLinkedList(const char *array);
+void linkedListToArray(struct Node* head, char *array);
 int menuHashing();
 
 #endif

@@ -10,6 +10,44 @@ struct Node* createNode(char data) {
     return newNode;
 }
 
+void freeLinkedList(struct Node* head) {
+    struct Node* current = head;
+    while (current != NULL) {
+        struct Node* next = current->next;
+        free(current);
+        current = next;
+    }
+}
+
+struct Node* arrayToLinkedList(const char *array) {
+    struct Node* head = NULL;
+    struct Node* tail = NULL;
+    
+    for (int i = 0; array[i] != '\0'; ++i) {
+        struct Node* newNode = createNode(array[i]);
+        if (head == NULL) {
+            head = tail = newNode;
+        } else {
+            tail->next = newNode;
+            newNode->prev = tail;
+            tail = newNode;
+        }
+    }
+    
+    return head;
+}
+
+void linkedListToArray(struct Node* head, char *array) {
+    struct Node* current = head;
+    int i = 0;
+    while (current != NULL) {
+        array[i] = current->data;
+        current = current->next;
+        i++;
+    }
+    array[i] = '\0';
+}
+
 void customEncrypt(const char *plaintextHash, char *ciphertextHash, int *randomValues) {
     int len = strlen(plaintextHash);
     srand(time(NULL));
