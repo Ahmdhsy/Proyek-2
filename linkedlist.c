@@ -1,5 +1,6 @@
 #include "linkedlist.h"
 
+// Fungsi untuk menambahkan node baru di awal linked list
 void insertAtBeginning(address *head_ref, address *tail, char new_data)
 {
     address newNode = (address)malloc(sizeof(Linked));
@@ -15,7 +16,7 @@ void insertAtBeginning(address *head_ref, address *tail, char new_data)
     
     if (*head_ref == NULL)
     {
-        *head_ref = newNode;
+        *head_ref = newNode; //jika kosong, pointer prev diisi dengan node baru menjadi head dan tail
         *tail = newNode; // Perbaikan: ganti - menjadi =
         return;
     }
@@ -34,7 +35,7 @@ void insertAtBeginning(address *head_ref, address *tail, char new_data)
 
 // Fungsi untuk menambahkan node baru di tengah linked list
 void insertAfter(address prev_node, char new_data) {
-    if (prev_node == NULL) {
+    if (prev_node == NULL) { //memeriksa apakah node sebelumnya tidak null
         printf("Node sebelumnya tidak boleh NULL\n");
         return;
     }
