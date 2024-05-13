@@ -1,25 +1,123 @@
 #include "hashing.h"
+#include "menu.h"
+#include "cls.h"
 
+struct Node* createNode(char data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    newNode->prev = NULL;
+    return newNode;
+}
 
-char *custom_hash(char *message) {
-    int len = strlen(message);
-    char *hashed_message = (char *)malloc((len + 1) * sizeof(char));
-
-    if (hashed_message == NULL) {
-        printf("Memory allocation failed.\n");
-        exit(1);
+void freeLinkedList(struct Node* head) {
+    struct Node* current = head;
+    while (current != NULL) {
+        struct Node* next = current->next;
+        free(current);
+        current = next;
     }
+}
 
-    // Tabel penggantian atau kunci
-    char replacement_table[] = "!@#$%^&*()_+-=[]{}|?~`QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890";
-	
-    // Mengubah setiap karakter pesan menjadi karakter acak dari tabel penggantian
-    for (int i = 0; i < len; i++) {
-        hashed_message[i] = replacement_table[rand() % strlen(replacement_table)];
+struct Node* arrayToLinkedList(const char *array) {
+    struct Node* head = NULL;
+    struct Node* tail = NULL;
+    
+    for (int i = 0; array[i] != '\0'; ++i) {
+        struct Node* newNode = createNode(array[i]);
+        if (head == NULL) {
+            head = tail = newNode;
+        } else {
+            tail->next = newNode;
+            newNode->prev = tail;
+            tail = newNode;
+        }
     }
+    
+    return head;
+}
 
-    hashed_message[len] = '\0'; // Menambahkan null-terminator
+void linkedListToArray(struct Node* head, char *array) {
+    struct Node* current = head;
+    int i = 0;
+    while (current != NULL) {
+        array[i] = current->data;
+        current = current->next;
+        i++;
+    }
+    array[i] = '\0';
+}
 
-    return hashed_message;
+void customEncrypt(const char *plaintextHash, char *ciphertextHash, int *randomValues) {
+    int len = strlen(plaintextHash);
+    srand(time(NULL));
+    for (int i = 0; i < len; ++i) {
+        randomValues[i] = rand() % 5 + 1;
+        ciphertextHash[i] = plaintextHash[i] + randomValues[i];
+    }
+    ciphertextHash[len] = '\0';
+}
+
+void customDecrypt(const char *ciphertextHash, char *plaintextHash, const int *randomValues) {
+    int len = strlen(ciphertextHash);
+    for (int i = 0; i < len; ++i) {
+        plaintextHash[i] = ciphertextHash[i] - randomValues[i];
+    }
+    plaintextHash[len] = '\0';
+}
+
+int menuHashing() {
+    char plaintextHash[MAX_LEN];
+    char ciphertextHash[MAX_LEN];
+    char decryptedText[MAX_LEN];
+    int randomValues[MAX_LEN];
+    int choice;
+    int randomValuesEncrypted = 0; // Flag to check if random values are stored
+
+    do {
+        printf("[1] Encrypt Custom Hashing\n");
+        printf("[2] Decrypt Custom Hashing\n");
+        printf("[3] Menu Utama\n");
+        printf("Pilih menu (1/2/3): ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+            	clear();
+                printf("Masukkan pesan/plaintext: ");
+                getchar();
+                fgets(plaintextHash, sizeof(plaintextHash), stdin);
+                customEncrypt(plaintextHash, ciphertextHash, randomValues);
+                printf("Encrypted text: %s\n", ciphertextHash);
+                randomValuesEncrypted = 1;
+                
+                printf("Tekan ENTER untuk continue...");
+                getchar();
+           		clear();
+                break;
+            case 2:
+            	clear();
+                if (!randomValuesEncrypted) {
+                    printf("Error: Random values tidak ada. Coba untuk mengenkripsi sebuah text terlebih dahulu.\n");
+                	break;
+                } else {
+                	printf("Ciphertext saat ini: %s", ciphertextHash);
+                	customDecrypt(ciphertextHash, decryptedText, randomValues);
+                	printf("Decrypted text: %s\n", decryptedText);
+                	printf("Tekan ENTER untuk continue...\n");
+                	getchar();
+                	getchar();
+                	clear();
+                	break;
+				}
+            case 3:
+                menu();
+                break;
+            default:
+                printf("Pilihan tidak valid. Silakan pilih 1, 2, atau 3.\n");
+        }
+    } while (choice != 3);
+
+    return 0;
 }
 
