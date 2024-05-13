@@ -100,7 +100,7 @@ int main()
             }
             else if (pilihanEncryptMenu == 2)
             {
-                fileName = (char *)malloc(256 * sizeof(char)); // Allocate memory for fileName
+                fileName = (char *)malloc(256 * sizeof(char));
                 printf("Masukkan nama file (ex:text.txt): ");
                 getchar();
                 scanf("%255s", fileName);
