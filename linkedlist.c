@@ -184,6 +184,7 @@ char *convertLinkedToString(address head_ref)
         pNode = pNode->next;
         i++;
     }
+    Result[i] = '\0'; 
 
     // Add null terminator to the end of the result string
     Result[i] = '\0';
