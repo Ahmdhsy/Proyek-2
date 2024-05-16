@@ -67,6 +67,33 @@ void clear();
 char *shift_word(char *word, int shift_value);
 ```
 
+```c
+// Function randomizePosition untuk menukar posisi info antar node
+void randomizePosition(address *head, address *tail, char *message, int size)
+```
+
+```c
+// Function insertRandomChar untuk melakukan penyisipan karakter pada node index ganjil setelah melakukan randomizePosisition
+void insertRandomChar(address *head, address *tail, char *message)
+```
+
+```c
+// Function convertLinkedToString untuk mengkonversi linkedlist menjadi array of char (string) agar bisa di proses lebih lanjut pada modul RSA
+char *convertLinkedToString(address head_ref);
+```
+
+```c
+// Function deleteRandomChar untuk menghapus karakter yang tidak seharusnya ada karena fungsi dari insertRandomChar tersebut
+void deleteRandomChar(address *head);
+```
+
+```c
+// Function unrandomizePosition untuk mengembalikan ke urutan pergeseran sebelumnya dan masuk ke invers shifting untuk di kembalikan ke messege awal
+void unrandomizePosition(address *head, address *tail, int size);
+```
+
+
+
 ## PEMBAGIAN TUGAS DAN FITUR - CONTRIBUTOR
 Pembuatan Metode RSA - Daiva Raditya Pradipa (039) (Username: RaditZX) \
 Pembuatan Metode Shifting - Ahmad Fauzan (033) (Username: Ahmdhsy) \

@@ -1,5 +1,6 @@
 #include "linkedlist.h"
 
+// Fungsi untuk menambahkan node baru di awal linked list
 void insertAtBeginning(address *head_ref, address *tail, char new_data)
 {
     address newNode = (address)malloc(sizeof(Linked));
@@ -15,7 +16,7 @@ void insertAtBeginning(address *head_ref, address *tail, char new_data)
     
     if (*head_ref == NULL)
     {
-        *head_ref = newNode;
+        *head_ref = newNode; //jika kosong, pointer prev diisi dengan node baru menjadi head dan tail
         *tail = newNode; // Perbaikan: ganti - menjadi =
         return;
     }
@@ -34,7 +35,7 @@ void insertAtBeginning(address *head_ref, address *tail, char new_data)
 
 // Fungsi untuk menambahkan node baru di tengah linked list
 void insertAfter(address prev_node, char new_data) {
-    if (prev_node == NULL) {
+    if (prev_node == NULL) { //memeriksa apakah node sebelumnya tidak null
         printf("Node sebelumnya tidak boleh NULL\n");
         return;
     }
@@ -150,23 +151,27 @@ char *convertLinkedToString(address head_ref)
 {
     address pNode;
     char *Result;
-    int i, len = 0;
+    int i, length = 0;
 
+    // Calculate the length of the linked list
     pNode = head_ref;
     while (pNode != NULL)
     {
-        len++;
+        length++;
         pNode = pNode->next;
     }
 
-    Result = (char *)malloc((len + 1) * sizeof(char)); 
+    // Allocate memory for the result string
+    Result = (char *)malloc((length + 1) * sizeof(char)); // Add space for the null terminator
+
+    // Check if memory allocation was successful
     if (Result == NULL)
     {
-        printf("Gagal melakukan alokasi memori.\n");
-        exit(1);
+        printf("Memory allocation failed\n");
+        exit(EXIT_FAILURE);
     }
 
-   
+    // Copy characters from linked list to the result string
     i = 0;
     pNode = head_ref;
     while (pNode != NULL)
@@ -176,6 +181,9 @@ char *convertLinkedToString(address head_ref)
         i++;
     }
     Result[i] = '\0'; 
+
+    // Add null terminator to the end of the result string
+    Result[i] = '\0';
 
     return Result;
 }

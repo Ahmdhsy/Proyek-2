@@ -1,4 +1,6 @@
 #include "Shifting.h"
+#include "linkedlist.h"
+#include <time.h>
 
 char *shift_message(char *message, int shift_value)
 {
@@ -136,3 +138,54 @@ void insertRandomChar(address *head, address *tail, char *message)
 //     printf("Linked List setelah insert random char: \n");
 //     printList(*head);
 // }
+
+void unrandomizePosition(address *head, address *tail, int size)
+{
+    address pNode = *head;
+    address pLast = *tail;
+
+    for (int i = 1; i < size / 2 - 1; i++)
+    {
+        if (pNode != NULL && pNode->next != NULL)
+        {
+            address temp = pNode->next;
+
+            char temp_info = pNode->info;
+            pNode->info = temp->info;
+            temp->info = temp_info;
+
+            pNode = temp->next;
+        }
+        if (pNode != NULL && pNode->prev != NULL)
+        {
+
+            address temp = pLast->prev;
+
+            char temp_info = pLast->info;
+            pLast->info = temp->info;
+            temp->info = temp_info;
+
+            pLast = temp->prev;
+        }
+    }
+
+    printf("Linked List setelah di-unrandomize: \n");
+    printList(*head);
+}
+
+void deleteRandomChar(address *head)
+{
+    address pNode = *head;
+
+    while (pNode != NULL)
+    {
+        if (pNode->prev != NULL)
+        {
+            deleteAfter(pNode->prev);
+        }
+        pNode = pNode->next;
+    }
+
+    printf("Linked List setelah menghapus karakter acak: \n");
+    printList(*head);
+}

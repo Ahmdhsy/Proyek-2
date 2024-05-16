@@ -4,7 +4,8 @@
     "files.associations": {
         "*.ejs": "html",
         "RSA.C": "c",
-        "rsa.h": "c"
+        "rsa.h": "c",
+        "linkedlist.h": "c"
     },
     "json.schemas": [
 
