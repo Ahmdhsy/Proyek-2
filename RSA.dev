@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=00000000a0000000001000000
-UnitCount=17
+UnitCount=19
 
 [VersionInfo]
 Major=1
@@ -212,6 +212,26 @@ BuildCmd=
 
 [Unit17]
 FileName=linkedlist.c
+CompileCpp=0
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit18]
+FileName=lsb.c
+CompileCpp=0
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit19]
+FileName=lsb.h
 CompileCpp=0
 Folder=
 Compile=1
