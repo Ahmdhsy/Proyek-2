@@ -50,7 +50,6 @@ void insertAfter(address prev_node, char new_data) {
 
 // Fungsi untuk menambahkan node baru di akhir linked list
 void insertAtEnd(address *head_ref, address *tail, char new_data) {
-    // Alokasi memori untuk node baru
     address newNode = (address)malloc(sizeof(Linked));
     if (newNode == NULL) {
         printf("Memory allocation failed\n");
@@ -61,7 +60,6 @@ void insertAtEnd(address *head_ref, address *tail, char new_data) {
     newNode->info = new_data;
     newNode->next = NULL;
 
-    // Jika linked list kosong, node baru menjadi head dan tail
     if (*head_ref == NULL) {
         newNode->prev = NULL;
         *head_ref = newNode;
@@ -103,15 +101,13 @@ void deleteAtBeginning(address *head_ref, address *tail) {
 
 // Fungsi untuk menghapus node di akhir linked list
 void deleteAtEnd(address *head_ref, address *tail) {
-    // Periksa apakah linked list kosong
     if (*head_ref == NULL) {
         printf("Linked list kosong\n");
         return;
     }
 
     address temp = *tail;
-
-    // Jika hanya ada satu node dalam linked list
+    
     if ((*head_ref)->next == NULL) {
         *head_ref = NULL;
         *tail = NULL;
@@ -125,7 +121,6 @@ void deleteAtEnd(address *head_ref, address *tail) {
 
 // Fungsi untuk menghapus node setelah node tertentu
 void deleteAfter(address prev_node) {
-    // Periksa apakah prev_node tidak NULL atau apakah prev_node bukan node terakhir dalam linked list
     if (prev_node == NULL || prev_node->next == NULL) {
         printf("Tidak ada node yang bisa dihapus setelah node ini\n");
         return;

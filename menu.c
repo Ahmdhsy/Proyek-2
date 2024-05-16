@@ -7,7 +7,9 @@ void menu()
     printf("1. Encrypt Shifting & RSA \n");
     printf("2. Decrypt Shifting & RSA \n");
     printf("3. Encrypt Shifting & Hashing\n");
-    printf("4. Keluar \n");
+    printf("4. Encrypt shifting & LSB\n");
+    printf("5. Decrypt shifting & LSB\n");
+    printf("6. Keluar \n");
     printf("========================================\n");
 }
 
