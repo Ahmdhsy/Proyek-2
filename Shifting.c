@@ -60,7 +60,7 @@ void randomizePosition(address *head, address *tail, char *message, int size)
     address pNode = *head;
     address pLast = *tail;
 
-    for (int i = 1; i < size / 2 - 1; i++)
+    for (int i = 1; i < size / 2 ; i++)
     {
         if (pNode != NULL && pNode->next != NULL)
         {
@@ -89,7 +89,7 @@ void randomizePosition(address *head, address *tail, char *message, int size)
     printList(*head);
 }
 
-void insertRandomChar(address *head, address *tail, char *message)
+void insertRandomChar(address *head)
 {
     srand(time(NULL));
     char replacement_table[] = "~`QWOP()_+-=[]{}|?NMqwertYUIASERTiopasfghXCVB!@#DFGHJKLZyujkld$%^&*zxcvbnm1234567890";
@@ -140,11 +140,11 @@ void insertRandomChar(address *head, address *tail, char *message)
 // }
 
 void unrandomizePosition(address *head, address *tail, int size)
-{
+{	
     address pNode = *head;
     address pLast = *tail;
 
-    for (int i = 1; i < size / 2 - 1; i++)
+    for (int i = 1; i < size / 2 ; i++)
     {
         if (pNode != NULL && pNode->next != NULL)
         {
@@ -156,7 +156,7 @@ void unrandomizePosition(address *head, address *tail, int size)
 
             pNode = temp->next;
         }
-        if (pNode != NULL && pNode->prev != NULL)
+        if (pLast != NULL && pNode->prev != NULL)
         {
 
             address temp = pLast->prev;
@@ -173,19 +173,23 @@ void unrandomizePosition(address *head, address *tail, int size)
     printList(*head);
 }
 
-void deleteRandomChar(address *head)
-{
+void deleteRandomChar(address *head, int *size) {
     address pNode = *head;
-
-    while (pNode != NULL)
-    {
-        if (pNode->prev != NULL)
-        {
-            deleteAfter(pNode->prev);
-        }
-        pNode = pNode->next;
+    int i = 0;
+    
+    while (pNode != NULL) {
+        if (pNode->next != NULL){
+        	address temp = pNode;
+        	pNode = pNode->next->next;
+            deleteAfter(temp);
+            i++;
+        }else{
+		pNode = pNode->next;
+		}
+        
     }
-
+	
+	*size = i + 1;
     printf("Linked List setelah menghapus karakter acak: \n");
     printList(*head);
 }
