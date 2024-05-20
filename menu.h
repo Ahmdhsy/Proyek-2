@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 void menu();
+void clearInputBuffer();
 void encryptMenu(int *pilihanEncryptMenu, char *metode);
 
 #endif

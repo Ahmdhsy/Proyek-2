@@ -13,26 +13,36 @@ void menu()
     printf("========================================\n");
 }
 
-void encryptMenu(int *pilihanEncryptMenu, char *metode)
-{
-    do
-    {
-        printf("Metode %s yang akan digunakan :  1\n", metode);
+void clearInputBuffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+void encryptMenu(int *pilihanEncryptMenu, char *metode) {
+    int result;
+    do {
+        printf("Metode %s yang akan digunakan: 1\n", metode);
         /* Menampilkan menu */
         printf("[1] Masukkan Teks\n");
         printf("[2] Read File\n");
         printf("Pilih menu (1/2): ");
-        scanf("%d", pilihanEncryptMenu);
-		clear();
-        switch (*pilihanEncryptMenu)
-        {
-	        case 1:
-	            break;
-	        case 2:
-	            printf("Membaca teks dari file untuk dienkripsi:\n");
-	            break;
-	        default:
-	            printf("Pilihan tidak valid. Silakan pilih 1 atau 2.\n");
+        result = scanf("%d", pilihanEncryptMenu);
+
+        // Clear the input buffer to handle invalid input
+        clearInputBuffer();
+
+        if (result == 1) { // Check if scanf successfully read an integer
+            switch (*pilihanEncryptMenu) {
+                case 1:
+                    break;
+                case 2:
+                    printf("Membaca teks dari file untuk dienkripsi:\n");
+                    break;
+                default:
+                    printf("Pilihan tidak valid. Silakan pilih 1 atau 2.\n");
+            }
+        } else {
+            printf("Input tidak valid. Masukkan angka 1 atau 2.\n");
         }
     } while (*pilihanEncryptMenu != 1 && *pilihanEncryptMenu != 2);
 }
