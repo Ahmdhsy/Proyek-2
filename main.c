@@ -10,7 +10,7 @@ int main()
 {
     int size, i, pilihan, pilihanEncryptMenu, shift_value;
     int *coded;
-    char *charArray;
+    char *randomizeMessage, *unRandomizeMessage;
     char *message = NULL, *decoded = NULL, *inversed_shifted_message = NULL, *fileName = NULL;
     char *shifted_message = NULL;
     char *chiperText = NULL;
@@ -35,6 +35,7 @@ int main()
             private_key = generatePrivateKey(public_key);
 
             message = (char *)malloc(256 * sizeof(char));
+            randomizeMessage = (char *)malloc(256 * sizeof(char));
 
             if (pilihanEncryptMenu == 1)
             {
@@ -67,8 +68,14 @@ int main()
 
             printf("\nInitial message:\n%s", message);
             printf("\nThe shifted message before encryption:\n%s", shifted_message);
-            //                randomizePosition(&head, &tail, shifted_message, strlen(shifted_message) - 1);
-            coded = encoder(shifted_message, &size, shift_value);
+            randomizePosition(&head, &tail, shifted_message, strlen(shifted_message));
+        	printf("Linked List setelah randomisasi: \n");
+    		printList(head);
+            insertRandomChar(&head);      
+		    printf("Linked List setelah insert random char: \n");
+		    printList(head);
+		    randomizeMessage = convertLinkedToString(head);
+            coded = encoder(randomizeMessage, &size, shift_value);
 
             printf("\nThe encoded message (encrypted by public key):\n");
 
@@ -83,6 +90,7 @@ int main()
         case 2:
             encryptMenu(&pilihanEncryptMenu, "decrypt");
             message = (char *)malloc(256 * sizeof(char));
+            unRandomizeMessage = (char *)malloc(256 * sizeof(char));
             if (pilihanEncryptMenu == 1)
             {
                 printf("Masukkan text yang ingin di dekripsi: ");
@@ -109,11 +117,19 @@ int main()
             getchar();
             clear();
 
-            printf("\nThe decoded message (decrypted by private key):\n");
             decoded = decoder(coded, size, &shift_value);
-            printf("The decoded message after decryption: %s\n", decoded);
+            printf("The decoded message after RSA decryption: %s\n", decoded);
+			head = convertStringToDoublyLinkedList(decoded);
+			deleteRandomChar(&head, &size);
+			address plast = head;
+			while (plast != NULL && plast->next != NULL) {
+			    plast = plast->next;
+			}
+			unrandomizePosition(&head, &plast, size);
+			unRandomizeMessage = convertLinkedToString(head);
+			
 
-            inversed_shifted_message = shift_message(decoded, -shift_value);
+            inversed_shifted_message = shift_message(unRandomizeMessage, -shift_value);
             printf("\nThe decoded message after invers shifting: %s\n", inversed_shifted_message);
 
             printf("\nPress enter to continue...");
@@ -201,9 +217,8 @@ int main()
             scanf("%d", &shift_value);
             getchar();
             clear();
-
             inversed_shifted_message = shift_message(hiddenText, -shift_value);
-            printf("\nThe decoded message after invers shifting:\n");
+            printf("The decoded message after invers shifting:\n");
             for (int i = 0; i < 50; i++)
             {
                 printf("%c", inversed_shifted_message[i]);
@@ -226,7 +241,6 @@ int main()
 
     // Free the pointers
     free(coded);
-    free(charArray);
     free(message);
     free(decoded);
     free(inversed_shifted_message);
@@ -238,7 +252,6 @@ int main()
 
     // Set pointers to NULL after freeing to avoid dangling pointers
     coded = NULL;
-    charArray = NULL;
     message = NULL;
     decoded = NULL;
     inversed_shifted_message = NULL;

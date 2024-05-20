@@ -188,3 +188,23 @@ char *convertLinkedToString(address head_ref)
     return Result;
 }
 
+address convertStringToDoublyLinkedList(const char *str) {
+    if (str == NULL || *str == '\0') {
+        return NULL;
+    }
+
+    // Create the head node
+    address head = createNode(str[0]);
+    address current = head;
+
+    // Traverse the string and create nodes for each character
+    for (int i = 1; str[i] != '\0'; i++) {
+        address newNode = createNode(str[i]);
+        current->next = newNode;
+        newNode->prev = current;
+        current = newNode;
+    }
+
+    return head;
+}
+

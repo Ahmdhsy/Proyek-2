@@ -29,4 +29,7 @@ void printList(address node);
 
 char *convertLinkedToString(address head_ref);
 
+address convertStringToDoublyLinkedList(const char *str);
+   
+
 #endif
