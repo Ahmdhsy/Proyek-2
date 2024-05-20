@@ -148,9 +148,6 @@ int menuHashing() {
                 break;
             case 3:
                 freeLinkedList(ciphertextLinkedList);
-                printf("Kembali ke menu tekan ENTER\n");
-                getchar();
-                clear();
                 menu();
                 break;
             default:
