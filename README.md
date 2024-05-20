@@ -5,11 +5,12 @@ Aplikasi ini dibuat untuk memenuhi tugas PROYEK 2 - PENGEMBANGAN APLIKASI BERBAS
 Aplikasi ini bertujuan untuk mengubah text biasa menjadi sekumpulan text yang tidak bisa dibaca yang disebut cipher text. Selain itu juga aplikasi ini juga bisa mengubah cipher text hasil metode RSA menjadi text biasa kembali yang dapat dibaca.
 
 ## INSTALLATION
-1. Clone repositori atau download semua file dari repositori.\
-2. Install IDE untuk bahasa c/c++ (sangat disarankan menggunakan dev C++)\
-3. Buat project baru di dalam IDE DevC++ (Project bertipe console application).\
+1. Clone repository atau download semua file dari repository\
+2. Install IDE untuk bahasa C/C++ (sangat disarankan menggunakan Dev C++)\
+3. Buat project baru di dalam IDE Dev C++ (Project bertipe console application)\
 4. Import semua file berekstensi .c dan .h ke dalam project\
-5. Run dan compile project.
+5. Run program RSA.dev\
+6. Run dan compile project pada Dev C++
 
 ## FUNCTION DI DALAM LIBRARY
 ```c
