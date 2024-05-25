@@ -5,11 +5,11 @@ Aplikasi ini dibuat untuk memenuhi tugas PROYEK 2 - PENGEMBANGAN APLIKASI BERBAS
 Aplikasi ini bertujuan untuk mengubah text biasa menjadi sekumpulan text yang tidak bisa dibaca yang disebut cipher text. Selain itu juga aplikasi ini juga bisa mengubah cipher text hasil metode RSA menjadi text biasa kembali yang dapat dibaca.
 
 ## INSTALLATION
-1. Clone repository atau download semua file dari repository\
-2. Install IDE untuk bahasa C/C++ (sangat disarankan menggunakan Dev C++)\
-3. Buat project baru di dalam IDE Dev C++ (Project bertipe console application)\
-4. Import semua file berekstensi .c dan .h ke dalam project\
-5. Run program RSA.dev\
+1. Clone repository atau download semua file dari repository
+2. Install IDE untuk bahasa C/C++ (sangat disarankan menggunakan Dev C++)
+3. Buat project baru di dalam IDE Dev C++ (Project bertipe console application)
+4. Import semua file berekstensi .c dan .h ke dalam project
+5. Run program RSA.dev
 6. Run dan compile project pada Dev C++
 
 ## FUNCTION DI DALAM LIBRARY
@@ -94,29 +94,43 @@ void unrandomizePosition(address *head, address *tail, int size);
 ```
 
 ```c
-// Function untuk membuat custom di sistem dekripsi yang adpada modul Hashing
-void customDecrypt(const char *ciphertextHash, char *plaintextHash, const int *randomValues, const char *replacementTable, const char *spaceSymbols, int numSymbols);
+// Function melakukan enkripsi untuk mengubah plaintext awal menjadi ciphertext
+void customEncrypt(const char *plaintextHash, char *ciphertextHash, int *randomValues, const char *replacementTable)
 ```
 
+```c
+// Function melakukan dekripsi untuk mengembalikan ciphertext ke plaintext awal
+void customDecrypt(const char *ciphertextHash, char *plaintextHash, const int *randomValues, const char *replacementTable, const char *spaceSymbols, int numSymbols)
+```
+
+```c
+// Function replaceSpace untuk mengganti spasi dengan karakter pada array
+char replaceSpace()
+```
+
+```c
+// Function menuHashing untuk menampilkan opsi menu khusus metode Hash
+int menuHashing()
+```
 
 ## PEMBAGIAN TUGAS DAN FITUR - CONTRIBUTOR
 Pembuatan Metode RSA - Daiva Raditya Pradipa (039) (Username: RaditZX) \
 Pembuatan Metode Shifting - Ahmad Fauzan (033) (Username: Ahmdhsy) \
 Pembuatan Metode Hashing - Bandyaga Adiansyah Sugandi (037) (Username: basganajaah) \
 Pembuatan Menu Aplikasi - Dhea Dria Spralia (040) (Username: dheaasprla) \
-Pembuatan Fitur Readfiles hasil Ciphertext - Febytha Putri Nugraheni (046) (Username: DFoerzaaaa) \
+Pembuatan Fitur Readfiles hasil Ciphertext - Febytha Putri Nugraheni (046) (Username: DFoerzaaaa)
 
 ## RENCANA TAMPILAN
-1. Tampilan awal berisi pilihan menu untuk enkripsi shifting dan RSA
-  a. memasukkan text yang ingin di enkripsi
-  b. lalu, masukkan nilai pergeseran(shifting)
+1. Tampilan awal berisi pilihan menu untuk enkripsi shifting dan RSA \
+		a. memasukkan text yang ingin di enkripsi \
+		b. lalu, masukkan nilai pergeseran(shifting) \
 3. Deskripsi shifting dan RSA
-  a. masukkan text yang telah di enkripsi
-  b. masukkan private key
+		a. masukkan text yang telah di enkripsi \
+		b. masukkan private key \
 5. Enkripsi shifting dan hasing
 6. Keluar
 
-Selanjutnya jika memilih salah satu akan menampilkan 
+Selanjutnya jika memilih salah satu akan menampilkan
 - masukan text
 - read file
 
@@ -126,7 +140,7 @@ Djoko Cahyo Utomo Lieharyani, S.Kom., M.MT. \
 NIP 199312282019031013
 
 MEMBER:\
-Ahmad Fauzan (NIM:231511033) (Username: Ahmdhsy) \ 
+Ahmad Fauzan (NIM:231511033) (Username: Ahmdhsy) \
 Daiva Raditya Pradipa (NIM:231511039) (Username: RaditZX) \
 Bandyaga Adiansyah Sugandi (NIM:231511037) (Username: basganajaah) \
 Dhea Dria Spralia (NIM:231511040) (Username: dheaasprla) \
