@@ -61,15 +61,15 @@ void randomizePosition(address *head, address *tail, char *message, int size)
     address pNode = *head;
     address pLast = *tail;
 
-    for (int i = 1; i < (size / 2) / 2; i++)
-        for (int i = 1; i < (size / 2) / 2; i++)
-        {
+    for (int i = 0; i < ((size / 2) / 2); i++)
+    {
+	
 
-            if (pNode != NULL && pNode->next != NULL)
+        if (pNode != NULL && pNode->next != NULL)
             {
 
-                address temp = pNode->next;
-                char temp_info = pNode->info;
+        	address temp = pNode->next;
+            char temp_info = pNode->info;
                 pNode->info = temp->info;
                 temp->info = temp_info;
 
@@ -77,20 +77,21 @@ void randomizePosition(address *head, address *tail, char *message, int size)
                 pNode = temp->next;
             }
 
-            if (pLast != NULL && pLast->prev != NULL)
+        
 
-                if (pLast != NULL && pLast->prev != NULL)
-                {
+        if (pLast != NULL && pLast->prev != NULL)
+        {
 
-                    address temp = pLast->prev;
-                    char temp_info = pLast->info;
-                    pLast->info = temp->info;
-                    temp->info = temp_info;
+            address temp = pLast->prev;
+            char temp_info = pLast->info;
+            pLast->info = temp->info;
+            temp->info = temp_info;
 
 
-                    pLast = temp->prev;
-                }
+            pLast = temp->prev;
         }
+	}
+        
 }
 
 void insertRandomChar(address *head){
@@ -153,10 +154,9 @@ void unrandomizePosition(address *head, address *tail, int size)
     address pNode = *head;
     address pLast = *tail;
 
-    for (int i = 1; i < (size / 2) / 2; i++)
-        for (int i = 1; i < (size / 2) / 2; i++)
-        {
-
+    for (int i = 0; i < (size / 2) / 2; i++)
+    {
+	
             if (pNode != NULL && pNode->next != NULL)
             {
 
@@ -169,7 +169,6 @@ void unrandomizePosition(address *head, address *tail, int size)
                 pNode = temp->next;
             }
 
-            if (pLast != NULL && pLast->prev != NULL)
 
                 if (pLast != NULL && pLast->prev != NULL)
                 {
@@ -208,19 +207,6 @@ void deleteRandomChar(address *head, address *tail, int *size)
         {
             pNode = pNode->next;
         }
-    }
-
-    *size = i + 1;
-    if (pNode->next != NULL)
-    {
-        address temp = pNode;
-        pNode = pNode->next->next;
-        deleteAfter(temp);
-        i++;
-    }
-    else
-    {
-        pNode = pNode->next;
     }
 
     *size = i + 1;

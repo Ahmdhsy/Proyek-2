@@ -40,7 +40,6 @@ int main()
             if (pilihanEncryptMenu == 1)
             {
                 printf("Masukkan text yang ingin di enkripsi: ");
-                getchar();
                 fgets(message, 256, stdin);
                 clear();
                 message[strcspn(message, "\n")] = '\0';
@@ -94,7 +93,6 @@ int main()
             if (pilihanEncryptMenu == 1)
             {
                 printf("Masukkan text yang ingin di dekripsi: ");
-                getchar();
                 fgets(message, 256, stdin);
                 clear();
                 message[strcspn(message, "\n")] = '\0';
