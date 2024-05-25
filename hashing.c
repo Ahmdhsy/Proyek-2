@@ -71,11 +71,13 @@ void addRandomCharacter(struct Node* head, const char *replacementTable) {
     while (current->next != NULL) {
         current = current->next;
     }
-    char randomChar = rand() % strlen(replacementTable);
+    int randomIndex = rand() % (strlen(replacementTable) - 1);
+    char randomChar = replacementTable[randomIndex];
     struct Node* newNode = createNode(randomChar);
     current->next = newNode;
     newNode->prev = current;
 }
+
 
 void deleteRandomCharacter(struct Node* head) {
     struct Node* current = head;

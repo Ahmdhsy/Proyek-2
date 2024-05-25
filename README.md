@@ -93,6 +93,10 @@ void deleteRandomChar(address *head);
 void unrandomizePosition(address *head, address *tail, int size);
 ```
 
+```c
+// Function untuk membuat custom di sistem dekripsi yang adpada modul Hashing
+void customDecrypt(const char *ciphertextHash, char *plaintextHash, const int *randomValues, const char *replacementTable, const char *spaceSymbols, int numSymbols);
+```
 
 
 ## PEMBAGIAN TUGAS DAN FITUR - CONTRIBUTOR
