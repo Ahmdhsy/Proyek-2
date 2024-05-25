@@ -52,57 +52,42 @@ char *shift_message(char *message, int shift_value)
 
 void randomizePosition(address *head, address *tail, char *message, int size)
 {
-    // Insert each character from message into the linked list
+	
     for (int i = 0; i < size; i++)
     {
         insertAtEnd(head, tail, message[i]);
     }
 
     address pNode = *head;
-    address pLast = pNode;
+    address pLast = *tail;
 
-    for (int i = 0; i < size / 2; i++)
+    for (int i = 1; i < (size / 2)/2; i++)
     {
 
         if (pNode != NULL && pNode->next != NULL)
         {
-            if (pNode->info != ' ' && pNode->next->info != ' ')
-            {
+           
                 address temp = pNode->next;
                 char temp_info = pNode->info;
                 pNode->info = temp->info;
                 temp->info = temp_info;
 
                 pNode = temp->next;
-            }
-            else
-            {
-                pNode = pNode->next;
-            }
+           
         }
-        
-        while(pLast->info != ' '){
-        	pLast = pLast->next;
-		}
 
         if (pLast != NULL && pLast->prev != NULL)
         {
-            if (pLast->info != ' ' && pLast->prev->info != ' ')
-            {
+         
                 address temp = pLast->prev;
                 char temp_info = pLast->info;
                 pLast->info = temp->info;
                 temp->info = temp_info;
 
                 pLast = temp->prev;
-            }
-            else
-            {
-                pLast = pLast->prev;
-            }
+           
         }
         
-        pLast = pLast->next;
     }
 }
 
@@ -158,50 +143,35 @@ void insertRandomChar(address *head)
 void unrandomizePosition(address *head, address *tail, int size)
 {
     address pNode = *head;
-    address pLast = pNode;
+    address pLast = *tail;
 
-    for (int i = 0; i < size / 2; i++)
+    for (int i = 1; i < (size / 2)/2; i++)
     {
 
         if (pNode != NULL && pNode->next != NULL)
         {
-            if (pNode->info != ' ' && pNode->next->info != ' ')
-            {
+           
                 address temp = pNode->next;
                 char temp_info = pNode->info;
                 pNode->info = temp->info;
                 temp->info = temp_info;
 
                 pNode = temp->next;
-            }
-            else
-            {
-                pNode = pNode->next;
-            }
+           
         }
-        
-        while(pLast->info != ' '){
-        	pLast = pLast->next;
-		}
 
         if (pLast != NULL && pLast->prev != NULL)
         {
-            if (pLast->info != ' ' && pLast->prev->info != ' ')
-            {
+         
                 address temp = pLast->prev;
                 char temp_info = pLast->info;
                 pLast->info = temp->info;
                 temp->info = temp_info;
 
                 pLast = temp->prev;
-            }
-            else
-            {
-                pLast = pLast->prev;
-            }
+           
         }
         
-        pLast = pLast->next;
     }
 
     printf("Linked List setelah di-unrandomize: \n");
