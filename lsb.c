@@ -30,9 +30,7 @@ void hideTextInPNG(const char *inputImage, const char *outputImage, const char *
         exit(1);
     }
 
-    // Use a writable buffer for text
-    char *textBuffer = my_strdup(text);
-    if (textBuffer == NULL)
+    if (text == NULL)
     {
         printf("Error allocating memory for text buffer.\n");
         stbi_image_free(image);
@@ -40,7 +38,7 @@ void hideTextInPNG(const char *inputImage, const char *outputImage, const char *
     }
 
     int textIndex = 0;
-    int textLength = strlen(textBuffer);
+    int textLength = strlen(text);
     int totalBits = textLength * 8;
 
     for (int y = 0; y < height; y++)
@@ -51,11 +49,12 @@ void hideTextInPNG(const char *inputImage, const char *outputImage, const char *
 
             for (int c = 0; c < CHANNELS; c++)
             {
+            	
                 if (textIndex < totalBits)
                 {
-                    // Clear the LSB and set it to the corresponding bit of the text
                     image[pixelIndex + c] &= 0xFE;
-                    image[pixelIndex + c] |= (textBuffer[textIndex / 8] >> (7 - (textIndex % 8))) & 1;
+                    image[pixelIndex + c] |= (text[textIndex / 8] >> (7 - (textIndex % 8))) & 1;
+                    printf("%c ", (text[textIndex / 8]));
                     textIndex++;
                 }
             }
@@ -65,7 +64,7 @@ void hideTextInPNG(const char *inputImage, const char *outputImage, const char *
     stbi_write_png(outputImage, width, height, CHANNELS, image, width * CHANNELS);
 
     stbi_image_free(image);
-    free(textBuffer);
+
 
     printf("Text hidden successfully in PNG.\n");
 }

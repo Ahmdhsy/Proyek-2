@@ -37,10 +37,10 @@ void encryptMenu(int *pilihanEncryptMenu, char *metode) {
         if (result == 1) { // Check if scanf successfully read an integer
             switch (*pilihanEncryptMenu) {
                 case 1:
-                    printf("Masukkan teks yang akan dienkripsi:\n");
+                  
                     break;
                 case 2:
-                    printf("Membaca teks dari file untuk dienkripsi:\n");
+                    
                     break;
                 default:
                     printf("Pilihan tidak valid. Silakan pilih 1 atau 2.\n");

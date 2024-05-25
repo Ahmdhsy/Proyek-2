@@ -155,7 +155,6 @@ int main()
             if (pilihanEncryptMenu == 1)
             {
                 printf("Masukkan text yang ingin di enkripsi: ");
-                getchar();
                 fgets(message, 256, stdin);
                 clear();
                 message[strcspn(message, "\n")] = '\0';
@@ -164,7 +163,6 @@ int main()
             {
                 fileName = (char *)malloc(256 * sizeof(char));
                 printf("Masukkan nama file (ex:text.txt): ");
-                getchar();
                 fgets(fileName, 256, stdin);
                 fileName[strcspn(fileName, "\n")] = '\0';
                 message = readFiles(fileName);
@@ -207,10 +205,6 @@ int main()
 
             hiddenText = retrieveTextFromPNG(imageName);
 
-            for (int i = 0; i < 10; i++)
-            {
-                printf("%c", hiddenText[i]);
-            }
 
             printf("\n");
 
