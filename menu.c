@@ -31,10 +31,10 @@ void encryptMenu(int *pilihanEncryptMenu, char *metode) {
         printf("Pilih menu (1/2): ");
         result = scanf("%d", pilihanEncryptMenu);
 
-        // Clear the input buffer to handle invalid input
+        //Membersihkan buffer input untuk menangani input yang tidak valid
         clearInputBuffer();
 
-        if (result == 1) { // Check if scanf successfully read an integer
+        if (result == 1) { // Mengecek apakah scanf berhasil membaca sebuah integer
             switch (*pilihanEncryptMenu) {
                 case 1:
                   

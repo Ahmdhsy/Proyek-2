@@ -9,7 +9,8 @@ void insertAtBeginning(address *head_ref, address *tail, char new_data)
         printf("Memory allocation failed\n");
         exit(EXIT_FAILURE);
     }
-
+    
+    //mengatur data node baru
     newNode->info = new_data;
     newNode->next = NULL;
     newNode->prev = NULL;
