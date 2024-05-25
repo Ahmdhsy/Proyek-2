@@ -8,8 +8,8 @@
 
 char *shift_message(char *message, int shift_value);
 void randomizePosition(address *head, address *tail, char *message, int size);
-void insertRandomChar(address *head, address *tail, char *message);
+void insertRandomChar(address *head);
 void unrandomizePosition(address *head, address *tail, int size);
-void deleteRandomChar(address *head);
+void deleteRandomChar(address *head, address *tail,int *size);
 
 #endif

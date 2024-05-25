@@ -52,7 +52,7 @@ char *shift_message(char *message, int shift_value)
 
 void randomizePosition(address *head, address *tail, char *message, int size)
 {
-    // Insert each character from message into the linked list
+	
     for (int i = 0; i < size; i++)
     {
         insertAtEnd(head, tail, message[i]);
@@ -61,42 +61,33 @@ void randomizePosition(address *head, address *tail, char *message, int size)
     address pNode = *head;
     address pLast = *tail;
 
-    for (int i = 0; i < size / 2; i++)
+    for (int i = 1; i < (size / 2)/2; i++)
     {
 
         if (pNode != NULL && pNode->next != NULL)
         {
-            if (pNode->info != ' ' && pNode->next->info != ' ')
-            {
+           
                 address temp = pNode->next;
                 char temp_info = pNode->info;
                 pNode->info = temp->info;
                 temp->info = temp_info;
 
                 pNode = temp->next;
-            }
-            else
-            {
-                pNode = pNode->next;
-            }
+           
         }
 
         if (pLast != NULL && pLast->prev != NULL)
         {
-            if (pLast->info != ' ' && pLast->prev->info != ' ')
-            {
+         
                 address temp = pLast->prev;
                 char temp_info = pLast->info;
                 pLast->info = temp->info;
                 temp->info = temp_info;
 
                 pLast = temp->prev;
-            }
-            else
-            {
-                pLast = pLast->prev;
-            }
+           
         }
+        
     }
 }
 
@@ -107,6 +98,7 @@ void insertRandomChar(address *head)
     char replacement_table[] = "~`QWOP()_+-=[]{}|?NMqwertYUIASERTiopasfghXCVB!@#DFGHJKLZyujkld$%^&*zxcvbnm1234567890";
 
     address pNode = *head;
+    address temp;
 
     while (pNode != NULL)
     {
@@ -115,8 +107,14 @@ void insertRandomChar(address *head)
             int charChoice = rand() % strlen(replacement_table);
             insertAfter(pNode->prev, replacement_table[charChoice]);
         }
+        if(pNode->next == NULL){
+        	temp = pNode;
+		}
         pNode = pNode->next;
     }
+    
+    int charChoice = rand() % strlen(replacement_table);
+    insertAfter(temp, replacement_table[charChoice]);
 
 }
 
@@ -154,51 +152,58 @@ void unrandomizePosition(address *head, address *tail, int size)
     address pNode = *head;
     address pLast = *tail;
 
-    for (int i = 1; i < (size / 2); i++)
+    for (int i = 1; i < (size / 2)/2; i++)
     {
+
         if (pNode != NULL && pNode->next != NULL)
         {
-            address temp = pNode->next;
+           
+                address temp = pNode->next;
+                char temp_info = pNode->info;
+                pNode->info = temp->info;
+                temp->info = temp_info;
 
-            char temp_info = pNode->info;
-            pNode->info = temp->info;
-            temp->info = temp_info;
-
-            pNode = temp->next;
+                pNode = temp->next;
+           
         }
+
         if (pLast != NULL && pLast->prev != NULL)
         {
+         
+                address temp = pLast->prev;
+                char temp_info = pLast->info;
+                pLast->info = temp->info;
+                temp->info = temp_info;
 
-            address temp = pLast->prev;
-
-            char temp_info = pLast->info;
-            pLast->info = temp->info;
-            temp->info = temp_info;
-
-            pLast = temp->prev;
+                pLast = temp->prev;
+           
         }
+        
     }
 
     printf("Linked List setelah di-unrandomize: \n");
     printList(*head);
 }
 
-void deleteRandomChar(address *head, int *size)
+void deleteRandomChar(address *head, address *tail, int *size)
 {
     address pNode = *head;
+    address temp;
 	int i = 0;
 
     while (pNode != NULL)
     {
        if(pNode->next != NULL){
-       	 address temp = pNode;
+       	 temp = pNode;
          pNode = pNode->next->next;
          deleteAfter(temp);
          i++;
 	   }else{
 	   	pNode = pNode->next;
 	   }
+	   
     }
+	
     
     *size = i + 1;
 

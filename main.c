@@ -120,7 +120,7 @@ int main()
             decoded = decoder(coded, size, &shift_value);
             printf("The decoded message after RSA decryption: %s\n", decoded);
 			head = convertStringToDoublyLinkedList(decoded);
-			deleteRandomChar(&head, &size);
+			deleteRandomChar(&head, &tail, &size);
 			address plast = head;
 			while (plast != NULL && plast->next != NULL) {
 			    plast = plast->next;
@@ -135,6 +135,7 @@ int main()
             printf("\nPress enter to continue...");
             getchar();
             clear();
+            free(head);
             break;
         case 3:
             menuHashing();

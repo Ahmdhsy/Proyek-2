@@ -127,7 +127,6 @@ int *encoder(char *message, int *size, int shift)
         exit(1);
     }
 
-    // Store the size of the message in the first element
     form[0] = n;
     form[length + 1] = shift;
 
@@ -144,7 +143,7 @@ int *convertToIntArray(char *str, int *size)
     int *array = NULL;
     int count = 0;
 
-    // Mencari tahu berapa banyak angka yang ada dalam string
+
     for (int i = 0; str[i] != '\0'; i++)
     {
         if (str[i] == ' ')
@@ -153,7 +152,6 @@ int *convertToIntArray(char *str, int *size)
         }
     }
 
-    // Alokasi memori untuk array integer
     array = (int *)malloc((count + 1) * sizeof(int));
     if (array == NULL)
     {
@@ -161,7 +159,6 @@ int *convertToIntArray(char *str, int *size)
         exit(1);
     }
 
-    // Mengonversi string menjadi array integer
     char *token = strtok(str, " ");
     int index = 0;
     while (token != NULL)
@@ -170,7 +167,6 @@ int *convertToIntArray(char *str, int *size)
         token = strtok(NULL, " ");
     }
 
-    // Menyimpan ukuran array
     *size = index;
 
     return array;
