@@ -1,4 +1,4 @@
-# APLIKASI ENCRYPTING MENGGUNAKAN METODE RSA
+![image](https://github.com/Ahmdhsy/Proyek-2/assets/114909592/357dd128-e363-452b-8c36-662e3c1fede4)# APLIKASI ENCRYPTING MENGGUNAKAN METODE RSA
 
 ## DESKRIPSI APLIKASI
 Aplikasi ini dibuat untuk memenuhi tugas PROYEK 2 - PENGEMBANGAN APLIKASI BERBASIS LIBRARY.
@@ -93,6 +93,10 @@ void deleteRandomChar(address *head);
 void unrandomizePosition(address *head, address *tail, int size);
 ```
 
+```c
+// Function untuk membuat custom di sistem dekripsi yang adpada modul Hashing
+void customDecrypt(const char *ciphertextHash, char *plaintextHash, const int *randomValues, const char *replacementTable, const char *spaceSymbols, int numSymbols);
+```c
 
 
 ## PEMBAGIAN TUGAS DAN FITUR - CONTRIBUTOR
