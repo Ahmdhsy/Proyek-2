@@ -139,11 +139,8 @@ int main()
             break;
         case 3:
             menuHashing();
-            printf("\nTekan ENTER untuk continue...");
-            getchar();
             clear();
             break;
-
         case 4:
             encryptMenu(&pilihanEncryptMenu, "encrypt");
             generatePrimeNumber();
