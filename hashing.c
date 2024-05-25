@@ -134,7 +134,6 @@ void customDecrypt(const char *ciphertextHash, char *plaintextHash, const int *r
     plaintextHash[len] = '\0';
 }
 
-
 int menuHashing() {
     char plaintext[MAX_LEN];
     char ciphertext[MAX_LEN];
@@ -145,17 +144,26 @@ int menuHashing() {
     char *shiftedPlaintext = NULL, *decryptedPlaintext = NULL;
     int numSpaceSymbols = sizeof(spaceSymbol) / sizeof(spaceSymbol[0]);
     int choice, shift_value;
-
+	char ch;
+	
     srand(time(NULL));
-
+	  
     do {
         printf("Menu Hashing:\n");
         printf("[1] Encrypt Hash\n");
         printf("[2] Decrypt Hash\n");
         printf("[3] Kembali ke Menu Utama\n");
-        printf("Masukkan pilihanmu: ");
-        scanf("%d", &choice);
-
+		while (1) {
+	        printf("Masukkan pilihanmu: ");
+	        if (scanf("%d", &choice) == 1) {
+	            while ((ch = getchar()) != '\n' && ch != EOF);
+	            break;
+	        } else {
+	            printf("\033[1;31mError: Masukkan angka sesuai menu!\033[0m\n");
+	            while ((ch = getchar()) != '\n' && ch != EOF);
+	        }
+		}	
+		
         switch (choice) {
 			case 1:
 			    clear();
@@ -197,14 +205,17 @@ int menuHashing() {
 			    break;
             case 2:
             	clear();
+                if (ciphertextLinkedList == NULL) {
+                    printf("\033[1;31mError: Tidak ada message untuk melakukan Decryption. Silakan Encryption terlebih dahulu!\033[0m\n");
+                    system("pause");
+                    clear();
+                    break;
+                }
+                
                 printf("Masukkan nilai pergeseran untuk unshifting pesan: ");
             	scanf("%d", &shift_value);
 				clear();
 				
-                if (ciphertextLinkedList == NULL) {
-                    printf("Error: tidak ada message untuk melakukan Decrypt. Encrypt terlebih dahulu.\n");
-                    break;
-                }
                 printf("Linked list saat ini dengan added character: ");
                 printLinkedList(ciphertextLinkedList);
                 deleteRandomCharacter(ciphertextLinkedList);
@@ -229,10 +240,8 @@ int menuHashing() {
                 freeLinkedList(ciphertextLinkedList);
                 break;
             default:
-            	clear();
-                printf("Pilihan salah. Masukkan input sesuai menu.\n");
-                system("pause");
-                clear();
+            	printf("\033[1;31mError: Masukkan angka sesuai menu!\033[0m\n");
+            	break;
         }
     } while (choice != 3);
 
