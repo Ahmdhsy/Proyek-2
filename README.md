@@ -94,12 +94,12 @@ void unrandomizePosition(address *head, address *tail, int size);
 ```
 
 ```c
-// Function melakukan enkripsi untuk mengubah plaintext awal menjadi ciphertext
+// Function customEncrypt melakukan enkripsi untuk mengubah plaintext awal menjadi ciphertext
 void customEncrypt(const char *plaintextHash, char *ciphertextHash, int *randomValues, const char *replacementTable)
 ```
 
 ```c
-// Function melakukan dekripsi untuk mengembalikan ciphertext ke plaintext awal
+// Function customDecrypt melakukan dekripsi untuk mengembalikan ciphertext ke plaintext awal
 void customDecrypt(const char *ciphertextHash, char *plaintextHash, const int *randomValues, const char *replacementTable, const char *spaceSymbols, int numSymbols)
 ```
 
@@ -123,10 +123,10 @@ Pembuatan Fitur Readfiles hasil Ciphertext - Febytha Putri Nugraheni (046) (User
 ## RENCANA TAMPILAN
 1. Tampilan awal berisi pilihan menu untuk enkripsi shifting dan RSA \
 		a. memasukkan text yang ingin di enkripsi \
-		b. lalu, masukkan nilai pergeseran(shifting) \
-3. Deskripsi shifting dan RSA
+		b. lalu, masukkan nilai pergeseran(shifting)
+3. Deskripsi shifting dan RSA \
 		a. masukkan text yang telah di enkripsi \
-		b. masukkan private key \
+		b. masukkan private key
 5. Enkripsi shifting dan hasing
 6. Keluar
 
