@@ -52,7 +52,7 @@ char *shift_message(char *message, int shift_value)
 
 void randomizePosition(address *head, address *tail, char *message, int size)
 {
-	
+
     for (int i = 0; i < size; i++)
     {
         insertAtEnd(head, tail, message[i]);
@@ -61,39 +61,40 @@ void randomizePosition(address *head, address *tail, char *message, int size)
     address pNode = *head;
     address pLast = *tail;
 
-    for (int i = 1; i < (size / 2)/2; i++)
-    {
-
-        if (pNode != NULL && pNode->next != NULL)
+    for (int i = 1; i < (size / 2) / 2; i++)
+        for (int i = 1; i < (size / 2) / 2; i++)
         {
-           
+
+            if (pNode != NULL && pNode->next != NULL)
+            {
+
                 address temp = pNode->next;
                 char temp_info = pNode->info;
                 pNode->info = temp->info;
                 temp->info = temp_info;
 
+
                 pNode = temp->next;
-           
-        }
+            }
 
-        if (pLast != NULL && pLast->prev != NULL)
-        {
-         
-                address temp = pLast->prev;
-                char temp_info = pLast->info;
-                pLast->info = temp->info;
-                temp->info = temp_info;
+            if (pLast != NULL && pLast->prev != NULL)
 
-                pLast = temp->prev;
-           
+                if (pLast != NULL && pLast->prev != NULL)
+                {
+
+                    address temp = pLast->prev;
+                    char temp_info = pLast->info;
+                    pLast->info = temp->info;
+                    temp->info = temp_info;
+
+
+                    pLast = temp->prev;
+                }
         }
-        
-    }
 }
 
+void insertRandomChar(address *head){
 
-void insertRandomChar(address *head)
-{
     srand(time(NULL));
     char replacement_table[] = "~`QWOP()_+-=[]{}|?NMqwertYUIASERTiopasfghXCVB!@#DFGHJKLZyujkld$%^&*zxcvbnm1234567890";
 
@@ -107,15 +108,15 @@ void insertRandomChar(address *head)
             int charChoice = rand() % strlen(replacement_table);
             insertAfter(pNode->prev, replacement_table[charChoice]);
         }
-        if(pNode->next == NULL){
-        	temp = pNode;
-		}
+        if (pNode->next == NULL)
+        {
+            temp = pNode;
+        }
         pNode = pNode->next;
     }
-    
+
     int charChoice = rand() % strlen(replacement_table);
     insertAfter(temp, replacement_table[charChoice]);
-
 }
 
 // versi sebelumnya
@@ -152,59 +153,76 @@ void unrandomizePosition(address *head, address *tail, int size)
     address pNode = *head;
     address pLast = *tail;
 
-    for (int i = 1; i < (size / 2)/2; i++)
-    {
-
-        if (pNode != NULL && pNode->next != NULL)
+    for (int i = 1; i < (size / 2) / 2; i++)
+        for (int i = 1; i < (size / 2) / 2; i++)
         {
-           
+
+            if (pNode != NULL && pNode->next != NULL)
+            {
+
                 address temp = pNode->next;
                 char temp_info = pNode->info;
                 pNode->info = temp->info;
                 temp->info = temp_info;
 
+
                 pNode = temp->next;
-           
-        }
+            }
 
-        if (pLast != NULL && pLast->prev != NULL)
-        {
-         
-                address temp = pLast->prev;
-                char temp_info = pLast->info;
-                pLast->info = temp->info;
-                temp->info = temp_info;
+            if (pLast != NULL && pLast->prev != NULL)
 
-                pLast = temp->prev;
-           
+                if (pLast != NULL && pLast->prev != NULL)
+                {
+
+                    address temp = pLast->prev;
+                    char temp_info = pLast->info;
+                    pLast->info = temp->info;
+                    temp->info = temp_info;
+
+
+                    pLast = temp->prev;
+                }
         }
-        
-    }
 
     printf("Linked List setelah di-unrandomize: \n");
     printList(*head);
 }
 
-void deleteRandomChar(address *head, address *tail, int *size)
+void deleteRandomChar(address *head, address *tail, int *size) 
 {
     address pNode = *head;
     address temp;
-	int i = 0;
+    int i = 0;
+
 
     while (pNode != NULL)
     {
-       if(pNode->next != NULL){
-       	 temp = pNode;
-         pNode = pNode->next->next;
-         deleteAfter(temp);
-         i++;
-	   }else{
-	   	pNode = pNode->next;
-	   }
-	   
+        if (pNode->next != NULL)
+        {
+            temp = pNode;
+            pNode = pNode->next->next;
+            deleteAfter(temp);
+            i++;
+        }
+        else
+        {
+            pNode = pNode->next;
+        }
     }
-	
-    
+
+    *size = i + 1;
+    if (pNode->next != NULL)
+    {
+        address temp = pNode;
+        pNode = pNode->next->next;
+        deleteAfter(temp);
+        i++;
+    }
+    else
+    {
+        pNode = pNode->next;
+    }
+
     *size = i + 1;
 
     printf("Linked List setelah menghapus karakter acak: \n");

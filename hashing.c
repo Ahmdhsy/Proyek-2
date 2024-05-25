@@ -111,15 +111,15 @@ int menuHashing() {
 
     do {
         printf("\nMenu:\n");
-        printf("[1] Encrypt\n");
-        printf("[2] Decrypt\n");
-        printf("[3] Exit\n");
-        printf("Enter your choice: ");
+        printf("[1] Encrypt Hash\n");
+        printf("[2] Decrypt Hash\n");
+        printf("[3] Kembali ke Menu Utama\n");
+        printf("Masukkan pilihanmu: ");
         scanf("%d", &choice);
 
         switch (choice) {
             case 1:
-                printf("Enter plaintext: ");
+                printf("Masukkkan plaintext: ");
                 getchar(); // Consume newline
                 fgets(plaintext, sizeof(plaintext), stdin); // Read entire line
                 customEncrypt(plaintext, ciphertext, randomValues);
@@ -128,18 +128,18 @@ int menuHashing() {
                 printf("Linked list ciphertext: ");
                 printLinkedList(ciphertextLinkedList);
                 addRandomCharacter(ciphertextLinkedList);
-                printf("Linked list after adding random character: ");
+                printf("Linked list setelah menambahkan random character: ");
                 printLinkedList(ciphertextLinkedList);
                 break;
             case 2:
                 if (ciphertextLinkedList == NULL) {
-                    printf("Error: No ciphertext available. Encrypt first.\n");
+                    printf("Error: tidak ada message untuk melakukan Decrypt. Encrypt terlebih dahulu.\n");
                     break;
                 }
-                printf("Current linked list containing added character: ");
+                printf("Linked list saat ini dengan added character: ");
                 printLinkedList(ciphertextLinkedList);
                 deleteRandomCharacter(ciphertextLinkedList);
-                printf("Linked list after deleting the added character: ");
+                printf("Linked list setelah hapus added character: ");
                 printLinkedList(ciphertextLinkedList);
                 linkedListToArray(ciphertextLinkedList, ciphertext);
                 printf("Ciphertext: %s\n", ciphertext);
@@ -148,10 +148,10 @@ int menuHashing() {
                 break;
             case 3:
                 freeLinkedList(ciphertextLinkedList);
-                printf("Exiting...\n");
+                menu();
                 break;
             default:
-                printf("Invalid choice! Please enter again.\n");
+                printf("Pilihan salah. Masukkan input sesuai menu.\n");
         }
     } while (choice != 3);
 
